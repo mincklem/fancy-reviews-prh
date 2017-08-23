@@ -1,0 +1,785 @@
+
+
+Started GET "/" for ::1 at 2017-08-23 12:51:46 -0400
+
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+	bin/rake db:migrate RAILS_ENV=development
+
+):
+  activerecord (4.2.0) lib/active_record/migration.rb:393:in `check_pending!'
+  activerecord (4.2.0) lib/active_record/migration.rb:374:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:88:in `call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:88:in `_run_callbacks'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:734:in `_run_call_callbacks'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.0) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.0) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.0) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.8) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.8) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.8) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.8) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.0) lib/rails/engine.rb:518:in `call'
+  railties (4.2.0) lib/rails/application.rb:164:in `call'
+  rack (1.6.8) lib/rack/lock.rb:17:in `call'
+  rack (1.6.8) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.8) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/mmincklembp/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /Users/mmincklembp/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /Users/mmincklembp/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /Users/mmincklembp/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.1ms)
+  Rendered /Users/mmincklembp/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.9ms)
+  Rendered /Users/mmincklembp/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /Users/mmincklembp/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (49.4ms)
+  Rendered /Users/mmincklembp/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.8ms)
+  Rendered /Users/mmincklembp/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/mmincklembp/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/mmincklembp/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.7ms)
+  Rendered /Users/mmincklembp/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (50.3ms)
+  Rendered /Users/mmincklembp/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/mmincklembp/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/mmincklembp/.rvm/gems/ruby-2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (110.4ms)
+  [1m[36m (0.9ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (0.9ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateReviews (20150402120406)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "reviews" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "isbn" integer, "title" varchar, "review_text" varchar, "star_rating" integer, "shelves" varchar, "likes" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20150402120406"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+Migrating to DeviseCreateViews (20150406022857)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+DEPRECATION WARNING: `#timestamp` was called without specifying an option for `null`. In Rails 5, this behavior will change to `null: false`. You should manually specify `null: true` to prevent the behavior of your existing migrations from changing. (called from block in change at /Users/mmincklembp/dev/bewd_19_copy/db/migrate/20150406022857_devise_create_views.rb:34)
+  [1m[35m (0.3ms)[0m  CREATE TABLE "views" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar, "last_sign_in_ip" varchar, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (0.3ms)[0m  [1mCREATE UNIQUE INDEX "index_views_on_email" ON "views" ("email")[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_views_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_views_on_email' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1mCREATE UNIQUE INDEX "index_views_on_reset_password_token" ON "views" ("reset_password_token")[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20150406022857"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+Migrating to CreateShelves (20150415232138)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mCREATE TABLE "shelves" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "isbn" integer, "shelves" text, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20150415232138"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+Migrating to CreateIsbns (20150418194038)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mCREATE TABLE "isbns" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20150418194038"]]
+  [1m[36m (0.5ms)[0m  [1mcommit transaction[0m
+Migrating to AddValueToShelves (20150418210554)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.5ms)[0m  [1mALTER TABLE "shelves" ADD "value" integer(8)[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20150418210554"]]
+  [1m[36m (0.5ms)[0m  [1mcommit transaction[0m
+Migrating to AddPlatformColumnToReviews (20150702150333)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "reviews" ADD "platform" varchar[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20150702150333"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+Migrating to AddDateToReviews (20150706204944)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "reviews" ADD "date" varchar[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20150706204944"]]
+  [1m[36m (0.5ms)[0m  [1mcommit transaction[0m
+Migrating to DeviseCreateUsers (20150731203858)
+  [1m[35m (0.0ms)[0m  begin transaction
+DEPRECATION WARNING: `#timestamp` was called without specifying an option for `null`. In Rails 5, this behavior will change to `null: false`. You should manually specify `null: true` to prevent the behavior of your existing migrations from changing. (called from block in change at /Users/mmincklembp/dev/bewd_19_copy/db/migrate/20150731203858_devise_create_users.rb:36)
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar, "last_sign_in_ip" varchar, "recent_titles" varchar, "my_lists" varchar, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (0.3ms)[0m  CREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  CREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20150731203858"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+Migrating to AddImgToReviews (20150801195629)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "reviews" ADD "img" varchar
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20150801195629"]]
+  [1m[35m (0.5ms)[0m  commit transaction
+Migrating to CreateLists (20150801224035)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  CREATE TABLE "lists" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "list" text, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20150801224035"]]
+  [1m[35m (0.5ms)[0m  commit transaction
+Migrating to ChangeColumn (20151014203113)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TEMPORARY TABLE "areviews" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "isbn" integer, "title" varchar, "review_text" varchar, "star_rating" integer, "shelves" varchar, "likes" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "platform" varchar, "date" varchar, "img" varchar) 
+  [1m[36m (0.0ms)[0m  [1mSELECT * FROM "reviews"[0m
+  [1m[35m (0.5ms)[0m  DROP TABLE "reviews"
+  [1m[36m (0.1ms)[0m  [1mCREATE TABLE "reviews" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "isbn" varchar, "title" varchar, "review_text" varchar, "star_rating" integer, "shelves" varchar, "likes" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "platform" varchar, "date" varchar, "img" varchar) [0m
+  [1m[35m (0.0ms)[0m  SELECT * FROM "areviews"
+  [1m[36m (0.3ms)[0m  [1mDROP TABLE "areviews"[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20151014203113"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+Migrating to ChangeColumnsIsbn (20151014203910)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mCREATE TEMPORARY TABLE "areviews" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "isbn" varchar, "title" varchar, "review_text" varchar, "star_rating" integer, "shelves" varchar, "likes" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "platform" varchar, "date" varchar, "img" varchar) [0m
+  [1m[35m (0.1ms)[0m  SELECT * FROM "reviews"
+  [1m[36m (0.2ms)[0m  [1mDROP TABLE "reviews"[0m
+  [1m[35m (0.1ms)[0m  CREATE TABLE "reviews" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "isbn" varchar, "title" varchar, "review_text" varchar, "star_rating" integer, "shelves" varchar, "likes" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "platform" varchar, "date" varchar, "img" varchar) 
+  [1m[36m (0.0ms)[0m  [1mSELECT * FROM "areviews"[0m
+  [1m[35m (0.1ms)[0m  DROP TABLE "areviews"
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151014203910"]]
+  [1m[35m (0.5ms)[0m  commit transaction
+Migrating to AddAuthorToReview (20170714195118)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "reviews" ADD "author" varchar
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20170714195118"]]
+  [1m[35m (0.5ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_views_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_views_on_reset_password_token' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_views_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_views_on_email' AND type='index'
+[0m
+
+
+Started GET "/" for ::1 at 2017-08-23 12:52:15 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ReviewsController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 3]]
+Completed 401 Unauthorized in 28ms
+
+
+Started GET "/users/sign_in" for ::1 at 2017-08-23 12:52:15 -0400
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (3.6ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (29.7ms)
+Completed 200 OK in 439ms (Views: 421.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/simple-sidebar.self-f11a591ecdfb120530a857497a3a4eb2d6c03eee11d73a062841392270e34e70.css?body=1" for ::1 at 2017-08-23 12:52:15 -0400
+
+
+Started GET "/assets/wordclouds.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2017-08-23 12:52:15 -0400
+
+
+Started GET "/assets/reviews.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2017-08-23 12:52:15 -0400
+
+
+Started GET "/assets/jqcloud.self-0ed0691d92e5e3da5ce97c43b510f0944b50f6280750fef905df2cec74276992.css?body=1" for ::1 at 2017-08-23 12:52:15 -0400
+
+
+Started GET "/assets/shelves.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2017-08-23 12:52:15 -0400
+
+
+Started GET "/assets/application.self-67d21e159d85e1735111e2474b9cd2c8d41b44999ce42d786089e1ed2a4d9c92.css?body=1" for ::1 at 2017-08-23 12:52:15 -0400
+
+
+Started GET "/assets/simple-sidebar.css" for ::1 at 2017-08-23 12:52:15 -0400
+
+
+Started GET "/assets/jquery.self-bd7ddd393353a8d2480a622e80342adf488fb6006d667e8b42e4c0073393abee.js?body=1" for ::1 at 2017-08-23 12:52:15 -0400
+
+
+Started GET "/assets/jquery_ujs.self-784a997f6726036b1993eb2217c9cb558e1cbb801c6da88105588c56f13b466a.js?body=1" for ::1 at 2017-08-23 12:52:15 -0400
+
+
+Started GET "/assets/turbolinks.self-1d1fddf91adc38ac2045c51f0a3e05ca97d07d24d15a4dcbf705009106489e69.js?body=1" for ::1 at 2017-08-23 12:52:15 -0400
+
+
+Started GET "/assets/nlp.min.self-7b6e7a2ed027aa102d0b972a7ad74509c8a62c8d741d73690cda7dbad3042f13.js?body=1" for ::1 at 2017-08-23 12:52:15 -0400
+
+
+Started GET "/assets/reviews.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2017-08-23 12:52:15 -0400
+
+
+Started GET "/assets/shelves.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2017-08-23 12:52:15 -0400
+
+
+Started GET "/assets/sitewide/stupidtable.self-a10b8d30eeddee2e2338f3fd3b8e2c330884d4fb010cbe12026c54b0dc3b7405.js?body=1" for ::1 at 2017-08-23 12:52:15 -0400
+
+
+Started GET "/assets/stupidtable.self-a10b8d30eeddee2e2338f3fd3b8e2c330884d4fb010cbe12026c54b0dc3b7405.js?body=1" for ::1 at 2017-08-23 12:52:15 -0400
+
+
+Started GET "/assets/wordclouds.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2017-08-23 12:52:15 -0400
+
+
+Started GET "/assets/jqcloud.self-386542fe307fd3139322f681559dd115f3e9530533d6aa8fc6ef2bec822e7a7f.js?body=1" for ::1 at 2017-08-23 12:52:15 -0400
+
+
+Started GET "/assets/application.self-f98a0dd27ad1c55b2b9cfe97296d4887e5d4a4535b3bbbf9130c1050771738b2.js?body=1" for ::1 at 2017-08-23 12:52:15 -0400
+
+
+Started POST "/users/sign_in" for ::1 at 2017-08-23 12:52:19 -0400
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"h2bDjwImNJwiJCQ0sYSlvYp50Gr3bFMt2QD0Voi8CjltQUyjZApfNV3s+KwlH2ww89/BUA9KVtQYJx4iLWBOQQ==", "user"=>{"email"=>"shared@prh.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."email" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["email", "shared@prh.com"]]
+Completed 401 Unauthorized in 2ms
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"h2bDjwImNJwiJCQ0sYSlvYp50Gr3bFMt2QD0Voi8CjltQUyjZApfNV3s+KwlH2ww89/BUA9KVtQYJx4iLWBOQQ==", "user"=>{"email"=>"shared@prh.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  Rendered devise/shared/_links.html.erb (2.1ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (6.8ms)
+Completed 200 OK in 124ms (Views: 54.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/simple-sidebar.css" for ::1 at 2017-08-23 12:52:19 -0400
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'shared@prh.com' LIMIT 1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "users" ("recent_titles", "email", "id", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["recent_titles", nil], ["email", "shared@prh.com"], ["id", 1], ["encrypted_password", "$2a$10$jwaYNFkSWIVZ8aIl65o0k.lFf6gH7gJrIRbeHoTtYn0oDOrzVuTKm"], ["created_at", "2017-08-23 16:52:40.873054"], ["updated_at", "2017-08-23 16:52:40.873054"]]
+  [1m[35m (0.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'aslothus@prh.com' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("recent_titles", "email", "id", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["recent_titles", nil], ["email", "aslothus@prh.com"], ["id", 2], ["encrypted_password", "$2a$10$m4WMSuTiYFQxdA2WiW6wweSExgdQcE7R5iEs9XH26ydk1m05Mbp26"], ["created_at", "2017-08-23 16:52:40.938615"], ["updated_at", "2017-08-23 16:52:40.938615"]]
+  [1m[35m (0.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'glevinson@prh.com' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("recent_titles", "email", "id", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["recent_titles", nil], ["email", "glevinson@prh.com"], ["id", 3], ["encrypted_password", "$2a$10$TzhXjXxQdV8wKYPERkeCIewUazEtswDO0OglIkF4gmkDNbb5og3k6"], ["created_at", "2017-08-23 16:52:41.003473"], ["updated_at", "2017-08-23 16:52:41.003473"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'lkelly@prh.com' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("recent_titles", "email", "id", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["recent_titles", nil], ["email", "lkelly@prh.com"], ["id", 4], ["encrypted_password", "$2a$10$IG1W07szcbXOZmQb7D77OOToggCFisuvXMeLMYKn6717ONlId50z6"], ["created_at", "2017-08-23 16:52:41.072342"], ["updated_at", "2017-08-23 16:52:41.072342"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'lcrisp@prh.com' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("recent_titles", "email", "id", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["recent_titles", nil], ["email", "lcrisp@prh.com"], ["id", 5], ["encrypted_password", "$2a$10$nLlNMWx7jTzyDbltA84qEue4LW/jNloSfB8rpVL.Z1u2xQbH7ejHu"], ["created_at", "2017-08-23 16:52:41.137546"], ["updated_at", "2017-08-23 16:52:41.137546"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'dpassannante@prh.com' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("recent_titles", "email", "id", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["recent_titles", nil], ["email", "dpassannante@prh.com"], ["id", 6], ["encrypted_password", "$2a$10$/ZfSGbqonPGLfmgZT6mD7Ov8cMg1JBsvGEFkLG4aVRCSqNNIHi51."], ["created_at", "2017-08-23 16:52:41.685925"], ["updated_at", "2017-08-23 16:52:41.685925"]]
+  [1m[35m (1.0ms)[0m  commit transaction
+
+
+Started GET "/" for ::1 at 2017-08-23 12:52:54 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ReviewsController#index as HTML
+Completed 401 Unauthorized in 16ms
+
+
+Started GET "/users/sign_in" for ::1 at 2017-08-23 12:52:54 -0400
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (5.0ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (22.6ms)
+Completed 200 OK in 234ms (Views: 222.0ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/simple-sidebar.css" for ::1 at 2017-08-23 12:52:54 -0400
+
+
+Started POST "/users/sign_in" for ::1 at 2017-08-23 12:52:56 -0400
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Q1AHoZfbYSLdDDMHf7Qb+imEp3rSaqUSSBNdyC+UXfypd4iN8fcKi6LE75/rL9J3UCK2QCpMoOuJNLe8ikgZhA==", "user"=>{"email"=>"shared@prh.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["email", "shared@prh.com"]]
+Completed 401 Unauthorized in 76ms
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Q1AHoZfbYSLdDDMHf7Qb+imEp3rSaqUSSBNdyC+UXfypd4iN8fcKi6LE75/rL9J3UCK2QCpMoOuJNLe8ikgZhA==", "user"=>{"email"=>"shared@prh.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  Rendered devise/shared/_links.html.erb (2.3ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (7.8ms)
+Completed 200 OK in 98ms (Views: 34.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/simple-sidebar.css" for ::1 at 2017-08-23 12:52:56 -0400
+
+
+Started POST "/users/sign_in" for ::1 at 2017-08-23 12:53:07 -0400
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"3XQl7w/FOpe7P66tk5UFLNQ1h1l2PpEb/NdQmjCEIqM3U6rDaelRPsT3cjUHDsyhrZOWY44YlOI98LrulVhm2w==", "user"=>{"email"=>"shared@prh.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."email" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["email", "shared@prh.com"]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE "users" SET "recent_titles" = ?, "last_sign_in_at" = ?, "current_sign_in_at" = ?, "last_sign_in_ip" = ?, "current_sign_in_ip" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["recent_titles", nil], ["last_sign_in_at", "2017-08-23 16:53:07.437169"], ["current_sign_in_at", "2017-08-23 16:53:07.437169"], ["last_sign_in_ip", "::1"], ["current_sign_in_ip", "::1"], ["sign_in_count", 1], ["updated_at", "2017-08-23 16:53:07.438915"], ["id", 1]]
+  [1m[35m (0.6ms)[0m  commit transaction
+Redirected to http://localhost:3000/welcome
+Completed 302 Found in 73ms (ActiveRecord: 1.1ms)
+
+
+Started GET "/welcome" for ::1 at 2017-08-23 12:53:07 -0400
+Processing by ReviewsController#welcome as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/" for ::1 at 2017-08-23 12:53:07 -0400
+Processing by ReviewsController#index as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  Rendered reviews/_quickDash.html.erb (0.2ms)
+  [1m[35mReview Load (0.1ms)[0m  SELECT "reviews".* FROM "reviews" WHERE ((isbn LIKE '28016509') AND (review_text LIKE '%%' OR title LIKE '%%'))
+  Rendered reviews/_list.html.erb (0.7ms)
+  Rendered reviews/_recentTitles.html.erb (0.4ms)
+  Rendered reviews/index.html.erb within layouts/application (4.7ms)
+Completed 200 OK in 39ms (Views: 27.3ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/simple-sidebar.css" for ::1 at 2017-08-23 12:53:07 -0400
+
+
+Started GET "/assets/cloud.png" for ::1 at 2017-08-23 12:53:07 -0400
+
+
+Started GET "/assets/ngrams.png" for ::1 at 2017-08-23 12:53:07 -0400
+
+
+Started GET "/assets/shelves.png" for ::1 at 2017-08-23 12:53:07 -0400
+
+
+Started GET "/" for ::1 at 2017-08-23 12:53:31 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ReviewsController#index as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  Rendered reviews/_quickDash.html.erb (0.2ms)
+  [1m[35mReview Load (0.2ms)[0m  SELECT "reviews".* FROM "reviews" WHERE ((isbn LIKE '28016509') AND (review_text LIKE '%%' OR title LIKE '%%'))
+  Rendered reviews/_list.html.erb (0.9ms)
+  Rendered reviews/_recentTitles.html.erb (0.4ms)
+  Rendered reviews/index.html.erb within layouts/application (15.9ms)
+Completed 200 OK in 249ms (Views: 202.9ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/assets/simple-sidebar.css" for ::1 at 2017-08-23 12:53:31 -0400
+
+
+Started GET "/assets/cloud.png" for ::1 at 2017-08-23 12:53:31 -0400
+
+
+Started GET "/assets/ngrams.png" for ::1 at 2017-08-23 12:53:31 -0400
+
+
+Started GET "/assets/shelves.png" for ::1 at 2017-08-23 12:53:31 -0400
+
+
+Started GET "/" for ::1 at 2017-08-23 12:53:46 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ReviewsController#index as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  Rendered reviews/_quickDash.html.erb (0.2ms)
+  [1m[35mReview Load (0.1ms)[0m  SELECT "reviews".* FROM "reviews" WHERE ((isbn LIKE '28016509') AND (review_text LIKE '%%' OR title LIKE '%%'))
+  Rendered reviews/_list.html.erb (0.8ms)
+  Rendered reviews/_recentTitles.html.erb (0.4ms)
+  Rendered reviews/index.html.erb within layouts/application (9.1ms)
+Completed 200 OK in 241ms (Views: 191.2ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/assets/simple-sidebar.css" for ::1 at 2017-08-23 12:53:47 -0400
+
+
+Started GET "/assets/cloud.png" for ::1 at 2017-08-23 12:53:47 -0400
+
+
+Started GET "/assets/ngrams.png" for ::1 at 2017-08-23 12:53:47 -0400
+
+
+Started GET "/assets/shelves.png" for ::1 at 2017-08-23 12:53:47 -0400
+
+
+Started GET "/" for ::1 at 2017-08-23 12:55:11 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ReviewsController#index as HTML
+  [1m[35mUser Load (0.6ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  Rendered reviews/_quickDash.html.erb (0.2ms)
+  [1m[35mReview Load (0.1ms)[0m  SELECT "reviews".* FROM "reviews" WHERE ((isbn LIKE '28016509') AND (review_text LIKE '%%' OR title LIKE '%%'))
+  Rendered reviews/_list.html.erb (0.9ms)
+  Rendered reviews/_recentTitles.html.erb (0.4ms)
+  Rendered reviews/index.html.erb within layouts/application (16.8ms)
+Completed 200 OK in 481ms (Views: 432.2ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/assets/application.self-b870f4765c2fcbf8cabec8478e3e32aa02ac855d9f609c451d170b187ee785a3.js?body=1" for ::1 at 2017-08-23 12:55:11 -0400
+
+
+Started GET "/assets/simple-sidebar.css" for ::1 at 2017-08-23 12:55:11 -0400
+
+
+Started GET "/assets/cloud.png" for ::1 at 2017-08-23 12:55:11 -0400
+
+
+Started GET "/assets/ngrams.png" for ::1 at 2017-08-23 12:55:11 -0400
+
+
+Started GET "/assets/shelves.png" for ::1 at 2017-08-23 12:55:11 -0400
+
+
+Started GET "/" for ::1 at 2017-08-23 12:55:14 -0400
+Processing by ReviewsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users"
+  Rendered reviews/_quickDash.html.erb (0.0ms)
+  [1m[36mReview Load (0.1ms)[0m  [1mSELECT "reviews".* FROM "reviews" WHERE ((isbn LIKE '28016509') AND (review_text LIKE '%%' OR title LIKE '%%'))[0m
+  Rendered reviews/_list.html.erb (0.4ms)
+  Rendered reviews/_recentTitles.html.erb (0.0ms)
+  Rendered reviews/index.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 24ms (Views: 21.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/simple-sidebar.css" for ::1 at 2017-08-23 12:55:14 -0400
+
+
+Started GET "/assets/cloud.png" for ::1 at 2017-08-23 12:55:14 -0400
+
+
+Started GET "/assets/ngrams.png" for ::1 at 2017-08-23 12:55:14 -0400
+
+
+Started GET "/assets/shelves.png" for ::1 at 2017-08-23 12:55:14 -0400
+
+
+Started GET "/" for ::1 at 2017-08-23 12:55:18 -0400
+Processing by ReviewsController#index as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  Rendered reviews/_quickDash.html.erb (0.1ms)
+  [1m[35mReview Load (0.1ms)[0m  SELECT "reviews".* FROM "reviews" WHERE ((isbn LIKE '28016509') AND (review_text LIKE '%%' OR title LIKE '%%'))
+  Rendered reviews/_list.html.erb (0.5ms)
+  Rendered reviews/_recentTitles.html.erb (0.0ms)
+  Rendered reviews/index.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 25ms (Views: 22.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/reviews.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2017-08-23 12:55:18 -0400
+
+
+Started GET "/assets/application.self-67d21e159d85e1735111e2474b9cd2c8d41b44999ce42d786089e1ed2a4d9c92.css?body=1" for ::1 at 2017-08-23 12:55:18 -0400
+
+
+Started GET "/assets/jqcloud.self-0ed0691d92e5e3da5ce97c43b510f0944b50f6280750fef905df2cec74276992.css?body=1" for ::1 at 2017-08-23 12:55:18 -0400
+
+
+Started GET "/assets/wordclouds.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2017-08-23 12:55:18 -0400
+
+
+Started GET "/assets/shelves.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2017-08-23 12:55:18 -0400
+
+
+Started GET "/assets/simple-sidebar.self-f11a591ecdfb120530a857497a3a4eb2d6c03eee11d73a062841392270e34e70.css?body=1" for ::1 at 2017-08-23 12:55:18 -0400
+
+
+Started GET "/assets/simple-sidebar.css" for ::1 at 2017-08-23 12:55:18 -0400
+
+
+Started GET "/assets/jquery.self-bd7ddd393353a8d2480a622e80342adf488fb6006d667e8b42e4c0073393abee.js?body=1" for ::1 at 2017-08-23 12:55:18 -0400
+
+
+Started GET "/assets/jquery_ujs.self-784a997f6726036b1993eb2217c9cb558e1cbb801c6da88105588c56f13b466a.js?body=1" for ::1 at 2017-08-23 12:55:18 -0400
+
+
+Started GET "/assets/turbolinks.self-1d1fddf91adc38ac2045c51f0a3e05ca97d07d24d15a4dcbf705009106489e69.js?body=1" for ::1 at 2017-08-23 12:55:18 -0400
+
+
+Started GET "/assets/nlp.min.self-7b6e7a2ed027aa102d0b972a7ad74509c8a62c8d741d73690cda7dbad3042f13.js?body=1" for ::1 at 2017-08-23 12:55:18 -0400
+
+
+Started GET "/assets/reviews.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2017-08-23 12:55:18 -0400
+
+
+Started GET "/assets/sitewide/stupidtable.self-a10b8d30eeddee2e2338f3fd3b8e2c330884d4fb010cbe12026c54b0dc3b7405.js?body=1" for ::1 at 2017-08-23 12:55:18 -0400
+
+
+Started GET "/assets/stupidtable.self-a10b8d30eeddee2e2338f3fd3b8e2c330884d4fb010cbe12026c54b0dc3b7405.js?body=1" for ::1 at 2017-08-23 12:55:18 -0400
+
+
+Started GET "/assets/shelves.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2017-08-23 12:55:18 -0400
+
+
+Started GET "/assets/wordclouds.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2017-08-23 12:55:18 -0400
+
+
+Started GET "/assets/jqcloud.self-386542fe307fd3139322f681559dd115f3e9530533d6aa8fc6ef2bec822e7a7f.js?body=1" for ::1 at 2017-08-23 12:55:18 -0400
+
+
+Started GET "/assets/application.self-b870f4765c2fcbf8cabec8478e3e32aa02ac855d9f609c451d170b187ee785a3.js?body=1" for ::1 at 2017-08-23 12:55:18 -0400
+
+
+Started GET "/assets/cloud.png" for ::1 at 2017-08-23 12:55:18 -0400
+
+
+Started GET "/assets/ngrams.png" for ::1 at 2017-08-23 12:55:18 -0400
+
+
+Started GET "/assets/shelves.png" for ::1 at 2017-08-23 12:55:18 -0400
+
+
+Started GET "/" for ::1 at 2017-08-23 12:55:49 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ReviewsController#index as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  Rendered reviews/_quickDash.html.erb (0.2ms)
+  [1m[35mReview Load (0.1ms)[0m  SELECT "reviews".* FROM "reviews" WHERE ((isbn LIKE '28016509') AND (review_text LIKE '%%' OR title LIKE '%%'))
+  Rendered reviews/_list.html.erb (0.7ms)
+  Rendered reviews/_recentTitles.html.erb (0.4ms)
+  Rendered reviews/index.html.erb within layouts/application (6.6ms)
+Completed 200 OK in 246ms (Views: 194.7ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/assets/application.self-f98a0dd27ad1c55b2b9cfe97296d4887e5d4a4535b3bbbf9130c1050771738b2.js?body=1" for ::1 at 2017-08-23 12:55:50 -0400
+
+
+Started GET "/assets/simple-sidebar.css" for ::1 at 2017-08-23 12:55:50 -0400
+
+
+Started GET "/assets/cloud.png" for ::1 at 2017-08-23 12:55:50 -0400
+
+
+Started GET "/assets/ngrams.png" for ::1 at 2017-08-23 12:55:50 -0400
+
+
+Started GET "/assets/shelves.png" for ::1 at 2017-08-23 12:55:50 -0400
+
+
+Started GET "/" for ::1 at 2017-08-23 12:56:51 -0400
+Processing by ReviewsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users"
+  Rendered reviews/_quickDash.html.erb (0.0ms)
+  [1m[36mReview Load (0.1ms)[0m  [1mSELECT "reviews".* FROM "reviews" WHERE ((isbn LIKE '28016509') AND (review_text LIKE '%%' OR title LIKE '%%'))[0m
+  Rendered reviews/_list.html.erb (0.4ms)
+  Rendered reviews/_recentTitles.html.erb (0.0ms)
+  Rendered reviews/index.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 27ms (Views: 24.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/shelves.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2017-08-23 12:56:51 -0400
+
+
+Started GET "/assets/reviews.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2017-08-23 12:56:51 -0400
+
+
+Started GET "/assets/jqcloud.self-0ed0691d92e5e3da5ce97c43b510f0944b50f6280750fef905df2cec74276992.css?body=1" for ::1 at 2017-08-23 12:56:51 -0400
+
+
+Started GET "/assets/simple-sidebar.self-f11a591ecdfb120530a857497a3a4eb2d6c03eee11d73a062841392270e34e70.css?body=1" for ::1 at 2017-08-23 12:56:51 -0400
+
+
+Started GET "/assets/application.self-67d21e159d85e1735111e2474b9cd2c8d41b44999ce42d786089e1ed2a4d9c92.css?body=1" for ::1 at 2017-08-23 12:56:51 -0400
+
+
+Started GET "/assets/wordclouds.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2017-08-23 12:56:51 -0400
+
+
+Started GET "/assets/simple-sidebar.css" for ::1 at 2017-08-23 12:56:51 -0400
+
+
+Started GET "/assets/jquery_ujs.self-784a997f6726036b1993eb2217c9cb558e1cbb801c6da88105588c56f13b466a.js?body=1" for ::1 at 2017-08-23 12:56:51 -0400
+
+
+Started GET "/assets/jquery.self-bd7ddd393353a8d2480a622e80342adf488fb6006d667e8b42e4c0073393abee.js?body=1" for ::1 at 2017-08-23 12:56:51 -0400
+
+
+Started GET "/assets/turbolinks.self-1d1fddf91adc38ac2045c51f0a3e05ca97d07d24d15a4dcbf705009106489e69.js?body=1" for ::1 at 2017-08-23 12:56:51 -0400
+
+
+Started GET "/assets/nlp.min.self-7b6e7a2ed027aa102d0b972a7ad74509c8a62c8d741d73690cda7dbad3042f13.js?body=1" for ::1 at 2017-08-23 12:56:51 -0400
+
+
+Started GET "/assets/reviews.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2017-08-23 12:56:51 -0400
+
+
+Started GET "/assets/shelves.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2017-08-23 12:56:51 -0400
+
+
+Started GET "/assets/sitewide/stupidtable.self-a10b8d30eeddee2e2338f3fd3b8e2c330884d4fb010cbe12026c54b0dc3b7405.js?body=1" for ::1 at 2017-08-23 12:56:51 -0400
+
+
+Started GET "/assets/wordclouds.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2017-08-23 12:56:51 -0400
+
+
+Started GET "/assets/stupidtable.self-a10b8d30eeddee2e2338f3fd3b8e2c330884d4fb010cbe12026c54b0dc3b7405.js?body=1" for ::1 at 2017-08-23 12:56:51 -0400
+
+
+Started GET "/assets/jqcloud.self-386542fe307fd3139322f681559dd115f3e9530533d6aa8fc6ef2bec822e7a7f.js?body=1" for ::1 at 2017-08-23 12:56:51 -0400
+
+
+Started GET "/assets/application.self-f98a0dd27ad1c55b2b9cfe97296d4887e5d4a4535b3bbbf9130c1050771738b2.js?body=1" for ::1 at 2017-08-23 12:56:51 -0400
+
+
+Started GET "/assets/cloud.png" for ::1 at 2017-08-23 12:56:51 -0400
+
+
+Started GET "/assets/ngrams.png" for ::1 at 2017-08-23 12:56:51 -0400
+
+
+Started GET "/assets/shelves.png" for ::1 at 2017-08-23 12:56:51 -0400
+
+
+Started GET "/" for ::1 at 2017-08-23 12:57:01 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ReviewsController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  Rendered reviews/_quickDash.html.erb (0.2ms)
+  [1m[35mReview Load (0.2ms)[0m  SELECT "reviews".* FROM "reviews" WHERE ((isbn LIKE '28016509') AND (review_text LIKE '%%' OR title LIKE '%%'))
+  Rendered reviews/_list.html.erb (0.9ms)
+  Rendered reviews/_recentTitles.html.erb (0.4ms)
+  Rendered reviews/index.html.erb within layouts/application (15.8ms)
+Completed 200 OK in 257ms (Views: 211.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/simple-sidebar.css" for ::1 at 2017-08-23 12:57:01 -0400
+
+
+Started GET "/assets/cloud.png" for ::1 at 2017-08-23 12:57:01 -0400
+
+
+Started GET "/assets/ngrams.png" for ::1 at 2017-08-23 12:57:01 -0400
+
+
+Started GET "/assets/shelves.png" for ::1 at 2017-08-23 12:57:01 -0400
+
+
+Started GET "/" for ::1 at 2017-08-23 12:57:53 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ReviewsController#index as HTML
+  [1m[35mUser Load (0.6ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  Rendered reviews/_quickDash.html.erb (0.2ms)
+  [1m[35mReview Load (0.1ms)[0m  SELECT "reviews".* FROM "reviews" WHERE ((isbn LIKE '28016509') AND (review_text LIKE '%%' OR title LIKE '%%'))
+  Rendered reviews/_list.html.erb (0.7ms)
+  Rendered reviews/_recentTitles.html.erb (0.4ms)
+  Rendered reviews/index.html.erb within layouts/application (6.7ms)
+Completed 200 OK in 240ms (Views: 187.7ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/assets/simple-sidebar.css" for ::1 at 2017-08-23 12:57:53 -0400
+
+
+Started GET "/assets/cloud.png" for ::1 at 2017-08-23 12:57:53 -0400
+
+
+Started GET "/assets/ngrams.png" for ::1 at 2017-08-23 12:57:53 -0400
+
+
+Started GET "/assets/shelves.png" for ::1 at 2017-08-23 12:57:53 -0400
+
+
+Started GET "/" for ::1 at 2017-08-23 12:59:40 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ReviewsController#index as HTML
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  Rendered reviews/_quickDash.html.erb (0.3ms)
+  [1m[35mReview Load (0.2ms)[0m  SELECT "reviews".* FROM "reviews" WHERE ((isbn LIKE '28016509') AND (review_text LIKE '%%' OR title LIKE '%%'))
+  Rendered reviews/_list.html.erb (1.0ms)
+  Rendered reviews/_recentTitles.html.erb (0.4ms)
+  Rendered reviews/index.html.erb within layouts/application (7.3ms)
+Completed 200 OK in 495ms (Views: 442.1ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/assets/test.self-8771de86baf2963e376a1b60a74f43a6081881d1f46027408288df5e4f59b893.js?body=1" for ::1 at 2017-08-23 12:59:40 -0400
+
+
+Started GET "/assets/simple-sidebar.css" for ::1 at 2017-08-23 12:59:40 -0400
+
+
+Started GET "/assets/cloud.png" for ::1 at 2017-08-23 12:59:40 -0400
+
+
+Started GET "/assets/ngrams.png" for ::1 at 2017-08-23 12:59:40 -0400
+
+
+Started GET "/assets/shelves.png" for ::1 at 2017-08-23 12:59:40 -0400
+
+
+Started GET "/" for ::1 at 2017-08-23 13:00:19 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ReviewsController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  Rendered reviews/_quickDash.html.erb (0.2ms)
+  [1m[35mReview Load (0.1ms)[0m  SELECT "reviews".* FROM "reviews" WHERE ((isbn LIKE '28016509') AND (review_text LIKE '%%' OR title LIKE '%%'))
+  Rendered reviews/_list.html.erb (0.8ms)
+  Rendered reviews/_recentTitles.html.erb (0.3ms)
+  Rendered reviews/index.html.erb within layouts/application (7.2ms)
+Completed 200 OK in 452ms (Views: 400.0ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/assets/simple-sidebar.css" for ::1 at 2017-08-23 13:00:20 -0400
+
+
+Started GET "/assets/cloud.png" for ::1 at 2017-08-23 13:00:20 -0400
+
+
+Started GET "/assets/ngrams.png" for ::1 at 2017-08-23 13:00:20 -0400
+
+
+Started GET "/assets/shelves.png" for ::1 at 2017-08-23 13:00:20 -0400
+
+
+Started GET "/" for ::1 at 2017-08-23 13:00:31 -0400
+Processing by ReviewsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users"
+  Rendered reviews/_quickDash.html.erb (0.0ms)
+  [1m[36mReview Load (0.1ms)[0m  [1mSELECT "reviews".* FROM "reviews" WHERE ((isbn LIKE '28016509') AND (review_text LIKE '%%' OR title LIKE '%%'))[0m
+  Rendered reviews/_list.html.erb (0.5ms)
+  Rendered reviews/_recentTitles.html.erb (0.0ms)
+  Rendered reviews/index.html.erb within layouts/application (3.6ms)
+Completed 200 OK in 170ms (Views: 167.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/Reviews.self-8771de86baf2963e376a1b60a74f43a6081881d1f46027408288df5e4f59b893.js?body=1" for ::1 at 2017-08-23 13:00:31 -0400
+
+
+Started GET "/assets/simple-sidebar.css" for ::1 at 2017-08-23 13:00:31 -0400
+
+
+Started GET "/assets/cloud.png" for ::1 at 2017-08-23 13:00:31 -0400
+
+
+Started GET "/assets/ngrams.png" for ::1 at 2017-08-23 13:00:31 -0400
+
+
+Started GET "/assets/shelves.png" for ::1 at 2017-08-23 13:00:31 -0400

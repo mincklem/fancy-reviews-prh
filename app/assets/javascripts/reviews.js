@@ -1,6 +1,5 @@
 $(document).ready(function(){
     console.log("HERE");
-    console.log("heroku check");
     var isbn;
     var stars = [];
     var user_excludes = [];
@@ -12,7 +11,6 @@ $(document).ready(function(){
     var reviewTextArray = [];
     var reviewTextString;
     var allStarRatings = [];
-    $("#summarytable").stupidtable();
 
 function callReviews() {
     $("#getGoodreads").click(function(){
@@ -39,8 +37,7 @@ function checkReviews () {
                   if (response[0] == true) {
                         clearInterval( id );
                         console.log("reviews Recieved");
-                        location.reload();
-                        $("#summarytable").stupidtable();
+                        location.reload()
                     }
             });
              // changing waiting text 

@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20170714195118) do
   end
 
   create_table "reviews", force: :cascade do |t|
+    t.string   "isbn"
     t.string   "title"
     t.string   "review_text"
     t.integer  "star_rating"
@@ -32,7 +33,6 @@ ActiveRecord::Schema.define(version: 20170714195118) do
     t.integer  "likes"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.string   "isbn"
     t.string   "platform"
     t.string   "date"
     t.string   "img"
@@ -42,9 +42,9 @@ ActiveRecord::Schema.define(version: 20170714195118) do
   create_table "shelves", force: :cascade do |t|
     t.integer  "isbn"
     t.text     "shelves"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer  "value"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.integer  "value",      limit: 8
   end
 
   create_table "users", force: :cascade do |t|
