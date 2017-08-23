@@ -862,7 +862,7 @@ function graphMonkey(result) {
 //                         .text(function(d) { return d; });
 // })
 // }
-makingchange();
+
 admin();
 deleteCloud();
 cloud_term_search();
