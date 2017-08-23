@@ -75,8 +75,14 @@
                    <!--  <li role="presentation"><a id="themesTab" href="#themes" aria-controls="themesTab" role="tab" data-toggle="tab">Keyword Extraction</a></li> -->
                     <li style="border-bottom: 1px solid #e9e9e9;" role="presentation"><a id="shelvesTab" href="#shelves" aria-controls="shelvesTab" role="tab" data-toggle="tab">Goodreads Shelves</a></li>
                         <!-- User lists, recents tabs-->
-                    <li role="presentation"><a id="recent_titles_tab" href="#recent_titles" aria-controls="recent_titles_tab" role="tab" data-toggle="tab">Recent Titles (<%=@monthly_titles_remaining%> this month)</a></li>
-<!--                     <li role="presentation"><a id="my_lists_tab" href="#my_lists" aria-controls="my_lists_tab" role="tab" data-toggle="tab">My Lists</a></li> -->
+                    <% if @monthly_title_max_reached == true %>
+                          <li role="presentation"><a id="recent_titles_tab" href="#recent_titles" aria-controls="recent_titles_tab" role="tab" data-toggle="tab">Recent Titles (<%=@monthly_titles_pulled%> this month)</a></li>
+                          <li style="color:red">* Max Monthly Count Reached</li>
+                    <% else %>
+                           <li role="presentation"><a id="recent_titles_tab" href="#recent_titles" aria-controls="recent_titles_tab" role="tab" data-toggle="tab">Recent Titles (<%=@monthly_titles_pulled%> this month)</a></li>
+                    <% end %>
+
+
                     </ul>
               </div>
           </ul>

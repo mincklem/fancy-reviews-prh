@@ -1,7 +1,13 @@
 <h1>Total Reviews Pulled: <%=@reviews.length%></h1>
-<h5> <i>Note: If total is higher than exist on Goodreads and Amazon: 1) Click "Clear Reviews" below 2) Click "Get Amazon/Goodreads reviews" again </i></h4>
-<button id="getGoodreads" class="btn btn-default btn-md">Get Amazon/Goodreads Reviews</button>
-<button id="clearDB" class="btn btn-default btn-md">Clear Reviews (empty database)</button>
+<h5> <i>Note: If total is higher than exist on Goodreads and Amazon: 1) Click "Clear Reviews" below 2) Click "Get Amazon/Goodreads reviews" again </i></h4><!-- 
+
+If title count has been reached, and selected title has NOT yet been called, deactivate button -->
+<% if @monthly_title_max_reached == true && @current_title_pulled_this_month_check == false%>
+<!-- Otherwise, allow repulling of previous title and all new titles -->
+<% else %>
+	<button id="getGoodreads" class="btn btn-default btn-md">Get Amazon/Goodreads Reviews</button>
+	<button id="clearDB" class="btn btn-default btn-md">Clear Reviews (empty database)</button>
+<% end %>
 <table id="summarytable" class="table table-bordered table-hover" data-sort-name="STAR RATING" data-sort-order="desc">
 	<thead>
 		<tr>

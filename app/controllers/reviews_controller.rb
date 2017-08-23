@@ -44,13 +44,13 @@ def index
 	  		# @date = session[:date]
 	  		@gr_reviews_count = session[:gr_reviews_count]
 	  		#count number of titles pulled this month, using recent titles timestamps
-	  		@monthly_titles_remaining = 0
+	  		@monthly_titles_pulled = 0
 	  		@this_month = Date.today.strftime("%B")
 	  		#GET RECENT TITLES FOR ALL USERS
 	  		@all_users = User.all 
 	  		@all_users.each do |user|
 	  			@this_month_count = 0
-	  	#CHECKING IF USER HAS NO RECENT TITLES
+	  			#CHECKING ALL USER TITLE COUNTS FOR ADMIN
 	  			if user.recent_titles
 		  			user.recent_titles.each do |recent_title|
 			  			@pulled_month = recent_title[4].split(" ")[0]
@@ -63,16 +63,50 @@ def index
 	  			end
 	  			user.recent_titles << @this_month_count 
 	  		end
-	  		#GET RECENT TITLES FOR EACH USER
+	  		
+	  		#GET RECENT TITLES FOR CURRENT USER
+	  				  		@current_title_pulled_this_month_check = false
 	  		@recent_titles = []
 	  		current_user.recent_titles.each do |recent_title|
+	  			#check if current title  was pulled this month 
 		  		@pulled_month = recent_title[4].split(" ")[0]
 		  		if @pulled_month.to_s == @this_month.to_s
-		  		@monthly_titles_remaining+=1
-		  		@recent_titles.push(recent_title)
-		  			end
+			  		@monthly_titles_pulled+=1
+			  		if recent_title[0] == session[:isbn]
+	  				@current_title_pulled_this_month_check = true
+	  				puts @current_title_pulled_this_month_check
 	  			end
-	  		@monthly_titles_remaining
+			  		@recent_titles.push(recent_title)
+	  			end
+	  		end
+
+			# CHECK TITLE COUNT LIMIT FOR EACH USER
+			@monthly_title_max_reached = false
+			if current_user.email == "shared@prh.com" && @monthly_titles_pulled == 3
+				@monthly_title_max_reached = true
+			end
+
+			if current_user.email == "aslothus@prh.com" && @monthly_titles_pulled == 200
+				@monthly_title_max_reached = true
+			end
+
+			if current_user.email == "glevinson@prh.com" && @monthly_titles_pulled == 50
+				@monthly_title_max_reached = true
+			end
+
+			if current_user.email == "lkelly@prh.com" && @monthly_titles_pulled == 30
+				@monthly_title_max_reached = true
+			end
+
+			if current_user.email == "lcrisp@prh.com" && @monthly_titles_pulled == 30
+				@monthly_title_max_reached = true
+			end
+
+			if current_user.email == "dpassannante@prh.com" && @monthly_titles_pulled == 30
+				@monthly_title_max_reached = true
+			end
+	  		
+	  		@monthly_titles_pulled
 	  		@recent_titles
 	  		#GET RECENTLY PULLED TITLES 
 	  			
