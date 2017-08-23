@@ -255,6 +255,10 @@ display: inline-block;
 
 }
 
+.cloud_term_select{
+   cursor: pointer;
+}
+
 .summaryOverlay {
   background-color: white;
   z-index: -1;

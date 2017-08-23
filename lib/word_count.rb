@@ -55,9 +55,6 @@ module WordCloud
 			text = passing_text.downcase.scan(/\s*("([^"]+)"|\w+)\s*/).map { |match| match[1].nil? ? match[0] : match[1] }
 			#filter out common 'stopwords'
 			f_text = text.delete_if{|x| $stop_words.split(" ").include?(x)}.join(' ')
-			puts "CUT TEXT"
-			puts f_text
-			puts "CUT TEXT END"
 			counts = Hash.new 0
 			@total_term_count = 0
 			f_text.split(" ").each do |word|
@@ -87,7 +84,6 @@ module WordCloud
 				
 				@hash_counts_plus_avgs[key] = [value, @term_star_average]
 			end
-			puts @hash_counts_plus_avgs	
 			#remove 1 letter words (key.length) that appear less than a certain number of times (value) 
 			@@all_reviews_text.clear
 			

@@ -11,7 +11,7 @@ $(document).ready(function(){
     var reviewTextArray = [];
     var reviewTextString;
     var allStarRatings = [];
-
+ 
 function callReviews() {
     $("#getGoodreads").click(function(){
         showSpinnerOverlay(this);
@@ -88,30 +88,28 @@ function clearReviews() {
 
 function starPhraseButton(){
         // get user star filter
-        $('button[type="button"').click(function(){
-            if ($(this).hasClass("selected")) {
-                $(this).removeClass("selected");
+        $('button').click(function(){
+            if ($(this).hasClass("active")) {
                 $(this).css("background-color", "#F7F5ED");
                 stars.splice($.inArray($(this).attr('id'), stars), 1)
             } else {
-            $(this).addClass("selected");
             $(this).css("background-color", "rgb(230, 230, 230)");
             stars.push($(this).attr('id'))
             }
         });
     }
 
-function starButton(){
+function cloudStarButtons(){
         // get user star filter
-        $('button[type="button"').click(function(){
-            if ($(this).hasClass("selected")) {
-                $(this).removeClass("selected");
+        $('.cloudstarbtn').click(function(){
+            if ($(this).hasClass("active")) {
                 $(this).css("background-color", "#F7F5ED");
-                stars.splice($.inArray($(this).attr('id'), stars), 1)
+                stars.splice($.inArray($(this).attr('id'), stars), 1);
+                console.log(stars)
             } else {
-            $(this).addClass("selected");
             $(this).css("background-color", "rgb(230, 230, 230)");
-            stars.push($(this).attr('id'))
+            stars.push($(this).attr('id'));
+            console.log(stars)
             }
         });
     }
@@ -320,6 +318,7 @@ function hideSpinnerOverlay(x){
 
 function starSubmit(){
     $("#starSubmit").click(function(){
+        console.log(stars);
         called_this_cloud = false;
         showSpinnerOverlay(this);
         //star checking
@@ -867,13 +866,13 @@ function graphMonkey(result) {
 admin();
 deleteCloud();
 cloud_term_search();
-starPhraseButton();
+// starPhraseButton();
 showChoice();
 storeISBN();
 shelvesCount();
 monkeyCall();
 activeTab();
-starButton();
+cloudStarButtons();
 starSubmit();
 clearReviews();
 recentTitlesLists();
