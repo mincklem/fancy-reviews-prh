@@ -1,0 +1,27 @@
+<%if @recent_titles.length < 1%>
+	<div>"No previously pulled titles."</div>
+<%else%>
+	<%@recent_titles.each do |title|%>
+			<div class="single_result">
+					<div class="cover_result">
+						<img src="<%=title[3]%>">
+					</div>
+					<div class="description_result">
+						<p>
+						<strong>Title: </strong><%=title[1] %> 
+						</p>
+						<p>
+						<%= button_to "Select this Title", reviews_path, :method => "post", :params => {
+						:choice => "#{title[0]}",
+						:isbn => "#{title[0]}",
+						:img => "#{title[3]}",
+						:title =>"#{title[1]}",
+						:author => "#{title[2]}"}, class: "btn btn-default btn-md"
+						%> 
+					</div>
+			</div>
+			<%end%>
+	<%end%>
+
+
+

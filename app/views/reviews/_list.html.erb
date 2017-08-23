@@ -1,0 +1,27 @@
+<h1>Total Reviews Pulled: <%=@reviews.length%></h1>
+<h5> <i>Note: If total is higher than exist on Goodreads and Amazon: 1) Click "Clear Reviews" below 2) Click "Get Amazon/Goodreads reviews" again </i></h4>
+<button id="getGoodreads" class="btn btn-default btn-md">Get Amazon/Goodreads Reviews</button>
+<button id="clearDB" class="btn btn-default btn-md">Clear Reviews (empty database)</button>
+<table id="summarytable" class="table table-bordered table-hover" data-sort-name="STAR RATING" data-sort-order="desc">
+	<thead>
+		<tr>
+			<th data-sort='string'>BOOK ID</th>
+			<th data-sort='string'>TITLE</th>
+			<th data-sort='string'>REVIEW TEXT</th>
+			<th data-sort='date'>REVIEW DATE</th>
+			<th th data-sort='string'>PLATFORM</th>
+			<th data-sort='float'>STAR RATING</th>
+		</tr>
+	</thead>
+	<% @reviews.each do |review| %>
+	<tbody>
+	    <td><%= review.isbn %></td>
+	    <td><%= review.title %></td> 		
+	    <td class="reviewText"><%= review.review_text %></td>
+	    <td> <%= review.date%></td>
+	    <td><%= review.platform %></td>
+	    <td class="starRating"><%= review.star_rating %></td>
+	</tbody>
+	<% end %>
+
+</table>

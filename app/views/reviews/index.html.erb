@@ -1,0 +1,207 @@
+
+<div id="wrapper">
+  <!-- Page Content -->
+  <div id="page-content-wrapper">
+  <div id="adminPanel">
+    <%if current_user%>
+      <%@all_users.each do |user|%>
+      <div><%=user.email%>,  <%=user.recent_titles.last%></div>
+      <%end%>
+    <%end%>
+  </div>
+        <div class="tab-content">
+          <div role="tabpanel" aria-labelledby="reviewsTab" class="tab-pane fade in active" id="reviews">
+            <div class="summaryOverlay">
+              <div class="spinnerBox" id="cloud_spinner">
+                  <div class="apiProgress" id="amzNotify">Workin'</div>
+                  <i class="fa fa-spinner fa-pulse fa-3x fa-fw margin-bottom" ></i>
+              </div>
+            </div>
+             <%= render 'quickDash' %>
+                      <div class="searchReviews">
+                        <%= form_tag "/", :id =>"search_reviews_form", method: "GET" do |f| %>
+                          <%= label_tag(:search, "Search within reviews:") %>
+                          <%= text_field_tag(:search_reviews, params[:search]) %>
+                          <%= submit_tag "Search", class: "btn btn-default btn-md"%>
+                        <% end %>
+                      </div>  
+                        <%= render 'list' %>
+          </div>
+
+        <div role="tabpanel" aria-labelledby="Recent Titles" class="tab-pane fade in " id="recent_titles">
+          <h1>RECENT TITLES - <%=@monthly_titles_remaining%> called this month.</h1>
+            <%= render 'recentTitles'%>
+        </div>
+
+<!--         <div role="tabpanel" aria-labelledby="My Lists" class="tab-pane fade in " id="my_lists">
+            <h1>MY LISTS </h1>
+            <%=@my_lists%>
+        </div> -->
+        <div role="tabpanel" aria-labelledby="Textual Analysis" class="tab-pane fade in " id="textualAnalysisPanel">
+              
+            <h1>Textual Analysis: Phrases</h1>          
+            <h3>Multi-term phrases use the reviews displayed on the Summary page.</h3>
+            <h5>Note: "Diff from Avg" is the difference between the average star rating for the book and the average star rating of reviews that contain the given phrase.</h5>
+
+        <ul class="nav nav-tabs" role="tablist">
+         <!-- NGRAM TAB HEADERS -->
+            <li role="presentation" class="active"><a href="#ngrams_by_length" aria-controls="ngrams_by_length" role="tab" data-toggle="tab">Phrases by Length</a></li>
+       <!--      <li role="presentation"><a href="#ngrams_by_stars" aria-controls="ngrams_by_stars" role="tab" data-toggle="tab">Phrases by Stars</a></li> -->
+
+         </ul>
+         <!-- NGRRAM TAB CONTENT -->
+         <div class="tab-content">    
+              <div role="tabpanel" aria-labelledby="ngrams_by_stars" class="tab-pane fade in " id="ngrams_by_stars">
+              <div class="text_analysis" id="ngrams">
+                <div id="ngram_submit_container">
+                  <button id="npl_ngram_stars" class="btn btn-default btn-md">Analyze by Stars</button>
+                  <input id="ngramDropIn" placeholder="Or drop-in any text to analyze"></input>
+                  </div>
+                <button type="button" id="phraseb1" class="btn btn-default btn-md">
+                  <span class="glyphicon glyphicon-star" aria-hidden="true"></span> 1 Star
+                  </button>
+                  <button type="button" id="phraseb2" class="btn btn-default btn-md">
+                      <span class="glyphicon glyphicon-star" aria-hidden="true"></span> 2 Star
+                  </button>
+                  <button type="button" id="phraseb3" class="btn btn-default btn-md">
+                      <span class="glyphicon glyphicon-star" aria-hidden="true"></span> 3 Star
+                  </button>
+                  <button type="button" id="phraseb4" class="btn btn-default btn-md">
+                      <span class="glyphicon glyphicon-star" aria-hidden="true"></span> 4 Star
+                  </button>
+                  <button type="button" id="phraseb5" class="btn btn-default btn-md">
+                      <span class="glyphicon glyphicon-star" aria-hidden="true"></span> 5 Star
+                  </button>
+              </div>
+                <i class="fa fa-spinner fa-pulse fa-3x fa-fw margin-bottom" ></i>
+              </div>
+              <div role="tabpanel" aria-labelledby="ngrams_by_length" class="tab-pane fade in active" id="ngrams_by_length">
+              <div class="text_analysis" id="ngrams">
+                <div id="ngram_submit_container">
+                  <button id="npl_ngram_length" class="btn btn-default btn-md">Analyze by Length</button>
+                  <input id="ngramDropIn" placeholder="Or drop-in any text to analyze"></input>
+                </div>
+              </div>
+              <i class="fa fa-spinner fa-pulse fa-3x fa-fw margin-bottom" ></i>
+            </div>
+          </div>
+        </div>
+        <div role="tabpanel" aria-labelledby="wordCloudTab" class="tab-pane fade" id="wordCloudPanel">
+            <div class="summaryOverlay">
+                  <div class="spinnerBox" id="cloud_spinner">
+                      <div class="apiProgress" id="cloudNotify">Fluffing that cloud...</div>
+                      <i class="fa fa-spinner fa-pulse fa-3x fa-fw margin-bottom" ></i>
+                  </div>
+             </div>
+            <div class="btn-group" data-toggle="buttons-checkbox">
+              <h1>Reviews Word Clouds</h1>
+              <h3>Word clouds use all available reviews for the selected title, per the filters below.</h3>
+              <button type="button" id="sb1" class="btn btn-default btn-md">
+                  <span class="glyphicon glyphicon-star" aria-hidden="true"></span> 1 Star
+              </button>
+              <button type="button" id="sb2" class="btn btn-default btn-md">
+                  <span class="glyphicon glyphicon-star" aria-hidden="true"></span> 2 Star
+              </button>
+              <button type="button" id="sb3" class="btn btn-default btn-md">
+                  <span class="glyphicon glyphicon-star" aria-hidden="true"></span> 3 Star
+              </button>
+              <button type="button" id="sb4" class="btn btn-default btn-md">
+                  <span class="glyphicon glyphicon-star" aria-hidden="true"></span> 4 Star
+              </button>
+              <button type="button" id="sb5" class="btn btn-default btn-md">
+                  <span class="glyphicon glyphicon-star" aria-hidden="true"></span> 5 Star
+              </button>
+              <button type="submit" id="starSubmit" class="btn btn-default btn-md"> Make a cloud! 
+              </button>
+            </div>
+            <div class="cloudParams">
+              <p>Exclude words (space separated): <input type="text" name="fname" id="cloud_excludes" value="read star book author review"></p>
+              <p>Minimum word frequency: <input type="text" name="fname" id="count_limit" value="50"></p>
+              <form>
+                <p>Drop-in Text? <input type="text" name="fname" id="drop_in_text" value="" maxlength="10000000000000000000000"> (Generate a wordcloud from any text you provide, instead of this title's reviews.)
+                </p>
+
+              <form>
+                <input type="checkbox" id="authorCheck" name="vehicle" value="Bike">  Exclude author and title?<br>
+              </form>
+            </div>
+              <div class="wordCloudsBox">
+              </div>
+          </div>
+          <div role="tabpanel" aria-labelledby="themesTab" class="tab-pane fade" id="themes">
+            <div id="monkey_themes">
+            <button id="themes_pull">Get Keywords</button>
+            <p>Exclude words (space separated): <input type="text" name="fname" id="thematic_excludes" value="read star book author review"></p>
+            </div>
+            <div id="monkey_keywords">
+              <h1>Keyword Analysis</h1>
+              <canvas id="keywordsChart" width="1000px" height="600px"></canvas>
+              <div class="spinnerBox" id="monkey_spinner">
+                <i class="fa fa-spinner fa-pulse fa-3x fa-fw margin-bottom" ></i>
+              </div>
+            </div>
+          </div>
+          <div role="tabpanel" aria-labelledby="shelvesTab" class="tab-pane fade" id="shelves">
+          <h1>Goodreads Shelves</h1>
+          <h4>Goodreads “shelves” are user-generated tags for titles (eg. “fiction”, “book club book”, etc.).  The following keyword-based roll-ups of Goodreads shelves provide insight into the categories where Goodreads users have shelved the given title most often. Reading status shelves have been omitted (eg. “to read”).</h4>
+          <div class="ngram_call_container">
+            <button id="shelvesCall" class="btn btn-default btn-md">Get Goodreads Shelves</button>
+            <div id="ngramerrorbox"> <---- Woops, please try that again.</div>
+          </div>
+              <div id="shelves_chart_box" class=".container-fluid">
+                  <h1>Goodreads Shelves - Category Roll-Ups</h1>
+                  <h4 id="shelves_total_box"></h4>
+                  <div id="rolled_shelves"> 
+                     <canvas id="rollShelvesChart" class="shelvesChart" width="900px" height="600px"></canvas>
+                     <div class="spinnerBox">
+                        <i class="fa fa-spinner fa-pulse fa-3x fa-fw margin-bottom" ></i>
+                      </div>
+                  </div>
+                <h1>Goodreads Shelves - All Shelves</h1>
+                 <div id="all_shelves">
+                    <canvas id="allShelvesChart" class="shelvesChart" width="900px" height="600px"></canvas>
+                     <div class="spinnerBox">
+                        <i class="fa fa-spinner fa-pulse fa-3x fa-fw margin-bottom" ></i>
+                      </div>
+                  </div>
+              <div class="col-sm-4">
+                    <h2>Category Roll-Ups</h2>
+                    <table id="rolled_shelves_table"class="table table-bordered table-hover shelves_table" data-sort-name="val" data-sort-order="desc">
+                        <thead>
+                          <tr>
+                            <th data-sortable="true">Shelf Name</th>
+                            <th data-sortable="true">Count</th>
+                          </tr>
+                        </thead>
+                    </table>
+                </div>
+                <div class="col-sm-4">
+                    <h2>All Shelves</h2>
+                    <table id="all_shelves_table" class="table table-bordered table-hover shelves_table" data-sort-name="val" data-sort-order="desc">
+                        <thead>
+                          <tr>
+                            <th data-sortable="true">Shelf Name</th>
+                            <th data-sortable="true">Count</th>
+                          </tr>
+                        </thead>
+                    </table>
+                </div>
+                <div class="col-sm-4">
+                  <div class="btn-group" data-toggle="buttons-checkbox">
+                        <h2>Add New Category</h1>
+                        <input class="addCustomCategory" id="CatName" placeholder="Category Name"></input>
+                        <input class="addCustomCategory" id="CatTerm1" placeholder="Category Term 1"></input>
+                        <input class="addCustomCategory" id="CatTerm1" placeholder="Category Term 2"></input>
+                        <button type="submit" id="starSubmit" class="btn btn-default btn-md">Submit
+                        </button>
+                      </div>
+                  <form id="customShelvesCategory"></input>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+          </div>
+          <!-- /#page-content-wrapper -->
+    </div>
+ 

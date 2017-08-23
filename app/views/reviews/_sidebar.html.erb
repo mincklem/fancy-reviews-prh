@@ -1,0 +1,149 @@
+
+      <div role="tabpanel" aria-labelledby="Recent Titles" class="tab-pane fade in " id="recent_titles">
+          <h1>RECENT TITLES</h1>
+            <%@recent_titles = recent_titles %>
+            <%= render 'recentTitles', :recent_titles => @recent_titles%>
+        </div>
+
+<!--         <div role="tabpanel" aria-labelledby="My Lists" class="tab-pane fade in " id="my_lists">
+            <h1>MY LISTS </h1>
+            <%=@my_lists%>
+        </div> -->
+        <div role="tabpanel" aria-labelledby="Textual Analysis" class="tab-pane fade in " id="textualAnalysisPanel">
+            <h1>Textual Analysis: Multi-term Phrases</h1>
+            <h4>Note: "Diff from Avg" is the difference between the average star rating for the book and the average star rating of reviews that contain the given phrase.</h4>
+            <div id="textAnalysisBox">
+             <!--  <div class="text_analysis" id="named_entity">
+                      <p><button id="npl_entity">Named-Entity Recognition</button>
+                      </p>
+                  <div class="entity_results"></div>
+                  </div> -->
+<!--               <div class="text_analysis">
+                <button id="npl_adj">Adjectives</button>
+              </div> -->
+                <div class="text_analysis" id="ngrams">
+                  <div class="spinnerBox" id="ngram_spinner">
+                      <i class="fa fa-spinner fa-pulse fa-3x fa-fw margin-bottom" ></i>
+                  </div>
+                    <div id="ngram_submit_container">
+                      <button id="npl_ngram" class="btn btn-default btn-md">Analyze 2-6 Term Ngrams</button>
+                      <input id="ngramDropIn" placeholder="Or drop-in any text to analyze"></input>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div role="tabpanel" aria-labelledby="wordCloudTab" class="tab-pane fade" id="wordCloudPanel">
+            <div class="summaryOverlay">
+                  <div class="spinnerBox" id="cloud_spinner">
+                      <div class="apiProgress" id="cloudNotify">Fluffing that cloud...</div>
+                      <i class="fa fa-spinner fa-pulse fa-3x fa-fw margin-bottom" ></i>
+                  </div>
+                </div>
+            <div class="btn-group" data-toggle="buttons-checkbox">
+              <h1>Reviews Word Clouds</h1>
+              <button type="button" id="sb1" class="btn btn-default btn-md">
+                  <span class="glyphicon glyphicon-star" aria-hidden="true"></span> 1 Star
+              </button>
+              <button type="button" id="sb2" class="btn btn-default btn-md">
+                  <span class="glyphicon glyphicon-star" aria-hidden="true"></span> 2 Star
+              </button>
+              <button type="button" id="sb3" class="btn btn-default btn-md">
+                  <span class="glyphicon glyphicon-star" aria-hidden="true"></span> 3 Star
+              </button>
+              <button type="button" id="sb4" class="btn btn-default btn-md">
+                  <span class="glyphicon glyphicon-star" aria-hidden="true"></span> 4 Star
+              </button>
+              <button type="button" id="sb5" class="btn btn-default btn-md">
+                  <span class="glyphicon glyphicon-star" aria-hidden="true"></span> 5 Star
+              </button>
+              <button type="submit" id="starSubmit" class="btn btn-default btn-md"> Make a cloud! 
+              </button>
+            </div>
+            <div class="cloudParams">
+              <p>Exclude words (space separated): <input type="text" name="fname" id="user_excludes" value="read star book author review"></p>
+              <p>Minimum word frequency: <input type="text" name="fname" id="count_limit" value="50"></p>
+              <form>
+                <p>Drop-in Text? <input type="text" name="fname" id="drop_in_text" value="" maxlength="10000000000000000000000"> (Generate a wordcloud from any text you provide, instead of this title's reviews.)
+                </p>
+
+              <form>
+                <input type="checkbox" id="authorCheck" name="vehicle" value="Bike">  Exclude author and title?<br>
+              </form>
+            </div>
+              <div class="wordCloudsBox">
+              </div>
+          </div>
+          <div role="tabpanel" aria-labelledby="themesTab" class="tab-pane fade" id="themes">
+            <div id="monkey_themes">
+            </div>
+            <div id="monkey_keywords">
+              <h1>MonkeyLearn's Keyword Analysis</h1>
+              <canvas id="keywordsChart" width="1000px" height="600px"></canvas>
+              <div class="spinnerBox" id="monkey_spinner">
+                <i class="fa fa-spinner fa-pulse fa-3x fa-fw margin-bottom" ></i>
+              </div>
+            </div>
+          </div>
+          <div role="tabpanel" aria-labelledby="shelvesTab" class="tab-pane fade" id="shelves">
+          <h1>Goodreads Shelves</h1>
+          <h4><i>Goodreads “shelves” are user-generated tags for titles (eg. “fiction”, “book club book”, etc.).  The following keyword-based roll-ups of Goodreads shelves provide insight into the categories where Goodreads users have shelved the given title most often. Reading status shelves have been omitted (eg. “to read”).</i></h4>
+          <div class="ngram_call_container">
+            <button id="shelvesCall" class="btn btn-default btn-md">Get Goodreads Shelves</button>
+            <div id="ngramerrorbox"> <---- Woops, please try that again.</div>
+          </div>
+              <div id="shelves_chart_box" class=".container-fluid">
+                  <h1>Goodreads Shelves - Category Roll-Ups</h1>
+                  <h4 id="shelves_total_box"></h4>
+                  <div id="rolled_shelves"> 
+                     <canvas id="rollShelvesChart" class="shelvesChart" width="900px" height="600px"></canvas>
+                     <div class="spinnerBox">
+                        <i class="fa fa-spinner fa-pulse fa-3x fa-fw margin-bottom" ></i>
+                      </div>
+                  </div>
+                <h1>Goodreads Shelves - All Shelves</h1>
+                 <div id="all_shelves">
+                    <canvas id="allShelvesChart" class="shelvesChart" width="900px" height="600px"></canvas>
+                     <div class="spinnerBox">
+                        <i class="fa fa-spinner fa-pulse fa-3x fa-fw margin-bottom" ></i>
+                      </div>
+                  </div>
+              <div class="col-sm-4">
+                    <h2>Category Roll-Ups</h2>
+                    <table id="rolled_shelves_table"class="table table-bordered table-hover shelves_table" data-sort-name="val" data-sort-order="desc">
+                        <thead>
+                          <tr>
+                            <th data-sortable="true">Shelf Name</th>
+                            <th data-sortable="true">Count</th>
+                          </tr>
+                        </thead>
+                    </table>
+                </div>
+                <div class="col-sm-4">
+                    <h2>All Shelves</h2>
+                    <table id="all_shelves_table" class="table table-bordered table-hover shelves_table" data-sort-name="val" data-sort-order="desc">
+                        <thead>
+                          <tr>
+                            <th data-sortable="true">Shelf Name</th>
+                            <th data-sortable="true">Count</th>
+                          </tr>
+                        </thead>
+                    </table>
+                </div>
+                <div class="col-sm-4">
+                  <div class="btn-group" data-toggle="buttons-checkbox">
+                        <h2>Add New Category</h1>
+                        <input class="addCustomCategory" id="CatName" placeholder="Category Name"></input>
+                        <input class="addCustomCategory" id="CatTerm1" placeholder="Category Term 1"></input>
+                        <input class="addCustomCategory" id="CatTerm1" placeholder="Category Term 2"></input>
+                        <button type="submit" id="starSubmit" class="btn btn-default btn-md">Submit
+                        </button>
+                      </div>
+                  <form id="customShelvesCategory"></input>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+          </div>
+          <!-- /#page-content-wrapper -->
+    </div>
