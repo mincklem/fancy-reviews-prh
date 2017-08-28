@@ -77,7 +77,7 @@
                         <!-- User lists, recents tabs-->
                     <% if @monthly_title_max_reached == true %>
                           <li role="presentation"><a id="recent_titles_tab" href="#recent_titles" aria-controls="recent_titles_tab" role="tab" data-toggle="tab">Recent Titles (<%=@monthly_titles_pulled%> this month)</a></li>
-                          <li style="color:red">* Monthly Title Limit Reached</li>
+                          <li style="color:red; hover:none">* Monthly Title Limit Reached</li>
                     <% else %>
                            <li role="presentation"><a id="recent_titles_tab" href="#recent_titles" aria-controls="recent_titles_tab" role="tab" data-toggle="tab">Recent Titles (<%=@monthly_titles_pulled%> this month)</a></li>
                     <% end %>

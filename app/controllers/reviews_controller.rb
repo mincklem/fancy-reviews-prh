@@ -19,9 +19,9 @@ class ReviewsController < ApplicationController
 	require 'tf-idf-similarity'
 
 def index
-	    if current_user == nil
-	    	Review.delete_all
-	    end
+	    # if current_user == nil
+	    # 	Review.delete_all
+	    # end
   		# if session[:isbn].class == NilClass
   		# 	redirect_to "/welcome"
   		# # 	# @new_session = true
