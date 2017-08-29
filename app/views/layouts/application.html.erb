@@ -28,14 +28,19 @@
 <div class="container-fluid">
 		 <div class="header">
       <img class="logo" src="https://i.imgur.com/n0TePKO.png" />
-		    <div class="title">Reader Reviews Dashboard</div>
-        
-        <%if current_user && current_user.email == "shared@prh.com"%>
-        <a class="login" id="adminLink">Admin</a>
-        <%end%>
+	    <div class="title">Reader Reviews Dashboard</div>
         <div class="login">
           <% if user_signed_in? %>
-            <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>        
+          <div class="dropdown">
+              <button class="dropbtn">Account</button>
+                <div class="dropdown-content">
+                  <%if current_user && current_user.email == "shared@prh.com"%>
+                  <a id="adminLink">Admin</a>
+                  <%end%>
+                <%= link_to "Change your password", edit_user_registration_path %>  
+                <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>    
+                </div>
+            </div>
           <% else %>
             <%= link_to('Login', new_user_session_path)  %>  
           <% end %>
