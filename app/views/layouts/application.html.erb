@@ -53,7 +53,11 @@
 <!--               <a href="#menu-toggle" class="btn btn-default" id="menu-toggle"></a> -->
               <div class="chosenTitle">
                       <div class="bookCover">
-                          <img id="chosen_cover" src="<%=@img%>">
+                          <%if @img%>
+                            <img id="chosen_cover" src="<%=@img%>">
+                          <%else%>
+                           <span style="position:relative;left: 15px; top: 25px">No Title Selected</span> 
+                          <%end%>
                       </div>
                       <div class="bookDescription">
                             <p id="chosenTitle" style="font-weight:bold" ><%=@title%></p>
