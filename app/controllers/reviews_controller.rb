@@ -88,27 +88,27 @@ def index
 
 			# CHECK TITLE COUNT LIMIT FOR EACH USER
 			@monthly_title_max_reached = false
-			if current_user.email == "shared@prh.com" && @monthly_titles_pulled == 3
+			if current_user.email == "shared@prh.com" && @monthly_titles_pulled >= 3
 				@monthly_title_max_reached = true
 			end
 
-			if current_user.email == "aslothus@prh.com" && @monthly_titles_pulled == 200
+			if current_user.email == "aslothus@prh.com" && @monthly_titles_pulled >= 200
 				@monthly_title_max_reached = true
 			end
 
-			if current_user.email == "glevinson@prh.com" && @monthly_titles_pulled == 50
+			if current_user.email == "glevinson@prh.com" && @monthly_titles_pulled >= 50
 				@monthly_title_max_reached = true
 			end
 
-			if current_user.email == "lkelly@prh.com" && @monthly_titles_pulled == 30
+			if current_user.email == "lkelly@prh.com" && @monthly_titles_pulled >= 30
 				@monthly_title_max_reached = true
 			end
 
-			if current_user.email == "lcrisp@prh.com" && @monthly_titles_pulled == 30
+			if current_user.email == "lcrisp@prh.com" && @monthly_titles_pulled >= 30
 				@monthly_title_max_reached = true
 			end
 
-			if current_user.email == "dpassannante@prh.com" && @monthly_titles_pulled == 30
+			if current_user.email == "dpassannante@prh.com" && @monthly_titles_pulled >= 30
 				@monthly_title_max_reached = true
 			end
 	  		
