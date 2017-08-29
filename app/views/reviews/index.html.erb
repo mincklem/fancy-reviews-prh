@@ -127,11 +127,13 @@
               </button>
             </div>
             <div class="cloudParams">
-              <form>
-                <input type="checkbox" id="authorCheck" name="vehicle" value="Bike">  Exclude author and title?<br>
-              </form>
-              <p>Exclude words (space separated): <input type="text" name="fname" id="cloud_excludes" value="read star book author review"></p>
-              <p>Minimum word frequency: <input type="text" name="fname" id="count_limit" value="50"></p>
+              <p>
+                <form>
+                  <input type="checkbox" id="authorCheck" name="vehicle" value="Bike">  Exclude author and title?</input>
+                </form>
+              </p>
+              <p>Exclude specific terms (space separated): <input type="text" name="fname" id="cloud_excludes" value="read star book author review"></p>
+              <p>Minimum word frequency: <input type="text" name="fname" id="count_limit" value="50"> (For fuller clouds when filtering to fewer reviews, toggle down).</p>
               <form>
                 <p>Drop-in Text? <input type="text" name="fname" id="drop_in_text" value="" maxlength="10000000000000000000000"> (Generate a wordcloud from any text you provide, instead of this title's reviews.)
                 </p>
