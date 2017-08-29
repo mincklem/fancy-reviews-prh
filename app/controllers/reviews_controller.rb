@@ -43,10 +43,16 @@ def index
 	  		@author = session[:author]
 	  		# @date = session[:date]
 	  		@gr_reviews_count = session[:gr_reviews_count]
-	  		#count number of titles pulled this month, using recent titles timestamps
+	  		#run recent titles function
+	  		recentTitles
+	  		
+  	end
+
+  	def recentTitles
+  			  		#count number of titles pulled this month, using recent titles timestamps
 	  		@monthly_titles_pulled = 0
 	  		@this_month = Date.today.strftime("%B")
-	  		#GET RECENT TITLES FOR ALL USERS
+  	#GET RECENT TITLES FOR ALL USERS
 	  		@all_users = User.all 
 	  		@all_users.each do |user|
 	  			@this_month_count = 0
@@ -112,6 +118,7 @@ def index
 	  			
   		# end
   	end
+
 
   	def callReviews
   			#clearing database 
@@ -519,17 +526,9 @@ def index
   end
 
   def search 
-		@monthly_titles_remaining = 0
-	  		@this_month = Date.today.strftime("%B")
-	  		current_user.recent_titles.each do |recent_title|
-	  			@pulled_month = recent_title[4].split(" ")[0]
-	  			if @pulled_month.to_s == @this_month.to_s
-	  				@monthly_titles_remaining+=1
-	  			end
-	  		end
-	  		@monthly_titles_remaining
-	  		#GET RECENTLY PULLED TITLES 
-	  		@recent_titles = current_user.recent_titles
+  	#run recent titles function
+  	recentTitles
+
 		user_search = params[:search_books]
 		@json = ISBN.find_isbn(user_search)
 		@result_count = @json["GoodreadsResponse"]["search"]["results_end"].to_i

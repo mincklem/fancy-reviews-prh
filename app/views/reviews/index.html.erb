@@ -17,6 +17,7 @@
                   <i class="fa fa-spinner fa-pulse fa-3x fa-fw margin-bottom" ></i>
               </div>
             </div>
+          <%if @title %> 
              <%= render 'quickDash' %>
                       <div class="searchReviews">
                         <%= form_tag "/", :id =>"search_reviews_form", method: "GET" do |f| %>
@@ -26,6 +27,17 @@
                         <% end %>
                       </div>  
                         <%= render 'list' %>
+            <%else%>
+                  <div id="page-content-wrapper">
+                    <div class="welcomeBox">
+                      <h1>Welcome to the Goodreads/Amazon Reviews Tool</h1>
+                      <h2>To begin, search for a book on the left-hand navbar by author, keyword, or isbn.  You can also select a previously used book in Recent Titles.</h2>
+                      <h2>Then get fancy with various analysis via the taps in the left-hand bar.</h2>
+                     </div>
+
+                     <i class="fa fa-arrow-up fa-3x fa-rotate-90 blink_me fa-inverse"></i>
+                  </div>
+              <%end%>
           </div>
 
         <div role="tabpanel" aria-labelledby="Recent Titles" class="tab-pane fade in " id="recent_titles">
@@ -115,15 +127,15 @@
               </button>
             </div>
             <div class="cloudParams">
+              <form>
+                <input type="checkbox" id="authorCheck" name="vehicle" value="Bike">  Exclude author and title?<br>
+              </form>
               <p>Exclude words (space separated): <input type="text" name="fname" id="cloud_excludes" value="read star book author review"></p>
               <p>Minimum word frequency: <input type="text" name="fname" id="count_limit" value="50"></p>
               <form>
                 <p>Drop-in Text? <input type="text" name="fname" id="drop_in_text" value="" maxlength="10000000000000000000000"> (Generate a wordcloud from any text you provide, instead of this title's reviews.)
                 </p>
 
-              <form>
-                <input type="checkbox" id="authorCheck" name="vehicle" value="Bike">  Exclude author and title?<br>
-              </form>
             </div>
               <div class="wordCloudsBox">
               </div>

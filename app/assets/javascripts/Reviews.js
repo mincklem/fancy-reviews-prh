@@ -533,6 +533,14 @@ function storeISBN() {
     })
 }
 
+function quickDashLinks(){
+    $( ".quickDashImage" ).on( "click", function() {
+        var thisTarget = $(this).attr("value");
+        console.log("#"+thisTarget+"");
+        $("#"+thisTarget+"").trigger( "click" );
+    });
+}
+
 function monkeyCall(){
     $("#themes_pull").click(function(){
       thematic_excludes =  $("#thematic_excludes").val();
@@ -864,6 +872,7 @@ function graphMonkey(result) {
 // }
 
 admin();
+quickDashLinks();
 deleteCloud();
 cloud_term_search();
 // starPhraseButton();
