@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170714195118) do
+ActiveRecord::Schema.define(version: 20170830183630) do
 
   create_table "isbns", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 20170714195118) do
     t.string   "date"
     t.string   "img"
     t.string   "author"
+    t.string   "who_called"
   end
 
   create_table "shelves", force: :cascade do |t|

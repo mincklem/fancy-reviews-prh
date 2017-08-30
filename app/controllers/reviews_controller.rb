@@ -19,25 +19,12 @@ class ReviewsController < ApplicationController
 	require 'tf-idf-similarity'
 
 def index
-	    # if current_user == nil
-	    # 	Review.delete_all
-	    # end
-  		# if session[:isbn].class == NilClass
-  		# 	redirect_to "/welcome"
-  		# # 	# @new_session = true
-  		# else
 	  		@review = Review.new
 	  		@goodreads_id = session[:isbn].to_s
 	  		puts "SESSION ISBN #{@goodreads_id}"
-	  		@reviews = Review.where("(isbn LIKE '#{@goodreads_id}') AND (review_text LIKE :query OR title LIKE :query)", 
+	  		#show reviews that the current user has pulled or searched for
+	  		@reviews = Review.where("(isbn LIKE '#{@goodreads_id}') AND (who_called LIKE '"+current_user.email+"') AND (review_text LIKE :query OR title LIKE :query)", 
 	  		query: "%#{params[:search_reviews]}%")
-	  		# respond_to do |format|
-			  #   format.html
-			  #   format.csv do
-			  #     headers['Content-Disposition'] = "attachment; filename=\"#{@title}reviews-list.csv\""
-			  #     headers['Content-Type'] ||= 'text/csv'
-			  #   end
-			  # end
 		  	@img = session[:img]
 	  		@title = session[:title]
 	  		@author = session[:author]
@@ -49,7 +36,7 @@ def index
   	end
 
   	def recentTitles
-  			  		#count number of titles pulled this month, using recent titles timestamps
+  			 #count number of titles pulled this month, using recent titles timestamps
 	  		@monthly_titles_pulled = 0
 	  		@this_month = Date.today.strftime("%B")
   	#GET RECENT TITLES FOR ALL USERS
@@ -121,15 +108,30 @@ def index
 
 
   	def callReviews
-  			#clearing database 
+  			#clearing database of reviews called by the current user
 			if params[:clearisbn].to_i == 1
 				puts "clearing now"
-				Review.where(:isbn=>session[:isbn]).delete_all
+				Review.where(:isbn=>session[:isbn]).where(:who_called=>current_user.email).delete_all
 			# check if book has been called recently
 			else
-			# elsif Review.where(:isbn=> params[:choice]).blank? && Review.where(["created_at < ?", 7.days.ago])
 				@goodreads_id = session[:isbn].to_s
 				api_reviews = ReviewApi::CalledReviews.new
+
+				# ========= GET REVIEWS BY BOOSHAKA CALLS ===========
+				@@gr_check = false
+				@@amz_check = false
+				@gr_review_array = api_reviews.gr_reviews(@goodreads_id)
+					if @gr_review_array.length > 1
+						@@gr_check = true
+					end
+				@amz_review_array = api_reviews.amz_reviews(@goodreads_id)
+					if @amz_review_array[0] != 1
+						@@amz_check = true
+					end
+				@reviews_array = @gr_review_array.push(*@amz_review_array)
+				@reviews_array = @reviews_array.uniq
+				# ========= END BOOSHAKA CALL ===========
+				
 				# ========= GET REVIEWS BY JQUERY, FRONT END =========== 
 				# 	platform = params[:call].to_i
 				# # get Amazon Reviews
@@ -146,22 +148,7 @@ def index
 				# elsif platform == 2.2
 				# 	@reviews_array = api_reviews.gr_reviews(@goodreads_id)
 						
-				# end
-				
-				@@gr_check = false
-				@@amz_check = false
-				# ========= GET REVIEWS BY BOOSHAKA CALLS ===========
-				@gr_review_array = api_reviews.gr_reviews(@goodreads_id)
-					if @gr_review_array.length > 1
-						@@gr_check = true
-					end
-				@amz_review_array = api_reviews.amz_reviews(@goodreads_id)
-					if @amz_review_array[0] != 1
-						@@amz_check = true
-					end
-				@reviews_array = @gr_review_array.push(*@amz_review_array)
-				@reviews_array = @reviews_array.uniq
-				# ========= END BOOSHAKA CALL ===========
+				# end		
 
 				#==========Alternate Goodreads call, calling via NOKOGIRI  ====
 				# @gr_reviews_count = session[:gr_reviews_count]
@@ -188,6 +175,7 @@ def index
 						date = this[:date].to_s
 						img = session[:img]
 						author = session[:author]
+						whocalled = current_user.email
 					@added_review = Review.create(
 							isbn: isbn, 
 							title: title,
@@ -197,6 +185,7 @@ def index
 							platform: platform,
 							star_rating: rating, 
 							likes: likes,
+							who_called: whocalled,
 							img: img)
 				end
 			#UPDATE USER RECENT TITLES
@@ -260,38 +249,6 @@ def index
 			session[:title] = params[:title]
 			session[:author] = params[:author]
 			session[:gr_reviews_count] = params[:gr_reviews_count]
-		# check if book has been called recently
-		# 	if Review.where(:isbn => params[:choice]).blank? && Review.where(["created_at < ?", 7.days.ago])
-		# 		api_reviews = ReviewApi::CalledReviews.new
-		# 		# ========= GET AMAZON REVIEWS =========== 
-		# 		@amz_review_array = api_reviews.amz_reviews(@goodreads_id)
-		# 			# ========= GET GOODREADS REVIEWS ===========
-		# 		@gr_review_array = api_reviews.gr_reviews(@goodreads_id)
-		# 		# ========= COMBINE REVIEWS =========== 
-		# 		@reviews_array = @gr_review_array.push(*@amz_review_array)
-		# 		@reviews_array.each_with_index do |this|
-		# 				isbn = this[:isbn]
-		# 				rating = this[:rating]
-		# 				review_text = this[:review_text]
-		# 				# user = this[:user]
-		# 				platform = this[:platform]
-		# 				title = params[:title].to_s		
-		# 				date = params[:date].to_s
-		# 				img = params[:img]
-		# 				puts img
-		# 			@added_review = Review.create(
-		# 					isbn: isbn, 
-		# 					title: title,
-		# 					date: date,
-		# 					review_text: review_text,
-		# 					platform: platform,
-		# 					star_rating: rating, 
-		# 					img: img)
-		# 		end
-		# 	else
-		# 		puts "ALREADY SEARCHED"
-		# 	end	
-
 		redirect_to "/" 
   	end
 
