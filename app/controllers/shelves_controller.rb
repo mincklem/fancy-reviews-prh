@@ -1,6 +1,6 @@
 class ShelvesController < ApplicationController
 	include ShelvesApi
-	
+
 	def index
 		@shelves = Shelf.all
 	end
@@ -28,7 +28,6 @@ class ShelvesController < ApplicationController
 				@search_result = Shelf.count_shelves(@isbn)
 			end
 		end
-		
 		@json_shelves = @search_result.to_json
 		respond_to do |format|
 			format.json { render json: @json_shelves }

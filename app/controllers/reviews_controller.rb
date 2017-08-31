@@ -18,11 +18,12 @@ class ReviewsController < ApplicationController
 	require 'matrix'
 	require 'tf-idf-similarity'
 
+
 def index
 	  		@review = Review.new
 	  		@goodreads_id = session[:isbn].to_s
 	  		puts "SESSION ISBN #{@goodreads_id}"
-	  		#show reviews that the current user has pulled or searched for
+	  		#
 	  		@reviews = Review.where("(isbn LIKE '#{@goodreads_id}') AND (who_called LIKE '"+current_user.email+"') AND (review_text LIKE :query OR title LIKE :query)", 
 	  		query: "%#{params[:search_reviews]}%")
 		  	@img = session[:img]

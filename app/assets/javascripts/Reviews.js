@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    console.log("HERE");
+    console.log("HERE HERE");
     var isbn;
     var stars = [];
     var user_excludes = [];
@@ -25,6 +25,7 @@ function callReviews() {
 }
 
 function checkReviews () {
+    console.log("checking reviews");
         // just a control var...
         var gen = 1;
         // call the function repeatedly in 5 seconds of interval
@@ -86,18 +87,18 @@ function clearReviews() {
 }
 
 
-function starPhraseButton(){
-        // get user star filter
-        $('button').click(function(){
-            if ($(this).hasClass("active")) {
-                $(this).css("background-color", "#F7F5ED");
-                stars.splice($.inArray($(this).attr('id'), stars), 1)
-            } else {
-            $(this).css("background-color", "rgb(230, 230, 230)");
-            stars.push($(this).attr('id'))
-            }
-        });
-    }
+// function starPhraseButton(){
+//         // get user star filter
+//         $('button').click(function(){
+//             if ($(this).hasClass("active")) {
+//                 $(this).css("background-color", "#F7F5ED");
+//                 stars.splice($.inArray($(this).attr('id'), stars), 1)
+//             } else {
+//             $(this).css("background-color", "rgb(230, 230, 230)");
+//             stars.push($(this).attr('id'))
+//             }
+//         });
+//     }
 
 function cloudStarButtons(){
         // get user star filter
@@ -318,6 +319,7 @@ function hideSpinnerOverlay(x){
 
 function starSubmit(){
     $("#starSubmit").click(function(){
+        console.log("star_Submit");
         console.log(stars);
         called_this_cloud = false;
         showSpinnerOverlay(this);
@@ -331,7 +333,7 @@ function starSubmit(){
         cloud_excludes = $("#cloud_excludes").val();
             $.ajax({
            type: "POST", 
-           url: 'reviews/stars',
+           url: '/stars',
            beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
            data: {"stars": stars, 
            "count": count, 
@@ -343,6 +345,7 @@ function starSubmit(){
 }
 
 function checkCloudTerms() {
+    console.log("checkingCloudcall");
         // just a control var...
         var gen = 1;
         // call the function repeatedly in 5 seconds of interval
