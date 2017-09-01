@@ -316,6 +316,30 @@ function hideSpinnerOverlay(x){
         }
 }
 
+// getting URL parameters from clicked cloud term
+function getURLParameters(){
+    var getUrlParameter = function getUrlParameter(sParam) {
+        var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+            sURLVariables = sPageURL.split('&'),
+            sParameterName,
+            i;
+
+        for (i = 0; i < sURLVariables.length; i++) {
+            sParameterName = sURLVariables[i].split('=');
+
+            if (sParameterName[0] === sParam) {
+                return sParameterName[1] === undefined ? true : sParameterName[1];
+            }
+        }
+    };
+    var cloud_term_search_parameter = getUrlParameter('search_reviews');
+    $("#search_reviews").attr("placeholder", cloud_term_search_parameter);
+    $("#search_reviews").text(cloud_term_search_parameter);
+    
+}
+
+
+
 
 function starSubmit(){
     $("#starSubmit").click(function(){
@@ -886,6 +910,7 @@ deleteCloud();
 cloud_term_search();
 // starPhraseButton();
 showChoice();
+getURLParameters();
 storeISBN();
 shelvesCount();
 monkeyCall();
