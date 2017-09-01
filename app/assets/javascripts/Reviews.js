@@ -319,6 +319,12 @@ function hideSpinnerOverlay(x){
 
 function starSubmit(){
     $("#starSubmit").click(function(){
+        ga('send', {
+          hitType: 'event',
+          eventCategory: 'Wordclouds',
+          eventAction: 'Made Cloud',
+          eventLabel: '1 Cloud'
+        });
         console.log("star_Submit");
         console.log(stars);
         called_this_cloud = false;
