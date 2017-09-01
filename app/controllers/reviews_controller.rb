@@ -17,7 +17,7 @@ class ReviewsController < ApplicationController
 	require 'ruby_nlp/corpus_files/brown'
 	require 'matrix'
 	require 'tf-idf-similarity'
-
+	require 'cld'
 
 def index
 	  		@review = Review.new
@@ -192,12 +192,13 @@ def index
 			#UPDATE USER RECENT TITLES
 			if current_user
 				@title_pulled_this_month = false
+				#check if the newly pulled title was pulled already this month
 				current_user.recent_titles.each do |title|
-					#check if the newly pulled title was pulled already this month
 					@pulled_month = title[4].split(" ")[0]
 					@this_month = Date.today.strftime("%B")
 					 if title[0] == @reviews_array[0][:isbn] && @pulled_month.to_s == @this_month.to_s
 						@title_pulled_this_month = true
+						puts @title_pulled_this_month
 					end
 				end
 				#if the newly pulled title was pulled already this month, don't add

@@ -2,6 +2,7 @@ require 'nokogiri'
 require 'open-uri'
 require 'thread'
 require 'typhoeus'
+require 'cld'
 
 module ReviewApi
 	class CalledReviews
@@ -33,13 +34,17 @@ module ReviewApi
 					# return @amz_reviews_array
 			  # 		else
 				  		response.each do |rev|
+				  			#check if ENGLISh via CLD gem
+				  			lang = CLD.detect_language(rev)
+			  				if lang[:name] == "ENGLISH" && lang[:reliable] == true
 					    		mapped_review = {isbn: @isbn,
 				    			rating: rev["rating"],
 				    			review_text: rev["review_text"],
 				    			user: rev["user"],
 				    			date: rev["date"],
 				    			platform: "Amazon"}
-				    		@amz_reviews_array.push(mapped_review)
+				    			@amz_reviews_array.push(mapped_review)
+				    		end
 						end
 					# end
 			counter = counter+1
@@ -65,6 +70,9 @@ module ReviewApi
 			   		return @gr_reviews_array
 			  	else
 			  		response.each do |rev|
+			  			#check if ENGLISh via CLD gem
+			  			lang = CLD.detect_language(rev)
+			  			if lang[:name] == "ENGLISH" && lang[:reliable] == true
 			  		   		mapped_review = {
 			    			isbn: @isbn,
 			    			rating: rev["rating"],
@@ -72,7 +80,8 @@ module ReviewApi
 			    			user: rev["user"],
 			    			date: rev["date"],
 			    			platform: "Goodreads"}
-			    		@gr_reviews_array.push(mapped_review)
+			    			@gr_reviews_array.push(mapped_review)
+			    		end
 					end
 				end
 			counter = counter+1

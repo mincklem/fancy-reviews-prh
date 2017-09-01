@@ -152,9 +152,9 @@ function nlpNgramLengthClick(){
      $("#npl_ngram_length").click(function() {
             $(".ngram_table").remove();
             $(".fa-pulse").css("visibility", "visible");
-            showSpinnerOverlay(this);
-            nlpNgramsLength();
-     });
+            var f1 = showSpinnerOverlay(this);
+             nlpNgramsLength(); // Alerts "123"
+    });
 }
 
 function nlpNgramStarsClick(){
