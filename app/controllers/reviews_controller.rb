@@ -17,7 +17,7 @@ class ReviewsController < ApplicationController
 	require 'ruby_nlp/corpus_files/brown'
 	require 'matrix'
 	require 'tf-idf-similarity'
-	require 'cld'
+
 
 def index
 	  		@review = Review.new
@@ -487,11 +487,11 @@ def index
   def search 
   	#run recent titles function
   	recentTitles
-
 		user_search = params[:search_books]
 		@json = ISBN.find_isbn(user_search)
 		@result_count = @json["GoodreadsResponse"]["search"]["results_end"].to_i
 		@returned_books = @json["GoodreadsResponse"]["search"]["results"]["work"]
+		puts @result_count
 		# puts @returned_books
   end
 

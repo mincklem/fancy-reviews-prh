@@ -1,7 +1,7 @@
 
 <div id="wrapper">
 		<div id="page-content-wrapper">
-			<%if @result_count.to_i == 1%>
+			<%if @result_count == 1%>
 				<div class="single_result">
 					<div class="cover_result">
 						<img src="<%=@returned_books["best_book"]["image_url"]%>">
@@ -17,13 +17,13 @@
 							<% @pub_date = "#{@returned_books["original_publication_day"]}/#{@returned_books["original_publication_month"]}/#{@returned_books["original_publication_year"]}" %>
 							<strong>Publication Year: </strong><%=@pub_date%>
 								<p>
-						<%= button_to "Select this Title", {class: "btn btn-default btn-md"}, reviews_path, :method => "post", :params => {
+						<%= button_to "Select this Title", reviews_path, :method => "post", :params => {
 								:choice => "#{@returned_books["best_book"]["id"]}",
 								:img => "#{@returned_books["best_book"]["image_url"]}",
 								:title =>"#{@returned_books["best_book"]["title"]}" ,
 								:author => "#{@returned_books["best_book"]["author"]["name"]}",
 								:date => "#{@pub_date}",
-								:gr_reviews_count => "#{@returned_books[number]["text_reviews_count"]}"}, class: "btn btn-default btn-md"
+								:gr_reviews_count => "#{@returned_books["text_reviews_count"]}"}, class: "btn btn-default btn-md"
 							%> 	
 					</div>
 				</div>
