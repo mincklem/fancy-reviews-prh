@@ -245,6 +245,7 @@ function nlpNgramsStars(){
 function nlpNgramsLength(){
         //================= NGRAMS BY LENGTH=====================
         var ngram_drop_in_text = $("#ngramDropIn").val().toLowerCase().replace(/[^a-zA-Z 0-9]+/g, '');
+        console.log(ngram_drop_in_text);
         $("#ngramDropIn").val('');
         console.log(ngram_drop_in_text.length);
         //if drop-in text exists, use that
