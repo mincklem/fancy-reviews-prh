@@ -334,7 +334,7 @@ function getURLParameters(){
         }
     };
     var cloud_term_search_parameter = getUrlParameter('search_reviews');
-    $("#search_reviews").attr("placeholder", cloud_term_search_parameter);
+    // $("#search_reviews").attr("placeholder", cloud_term_search_parameter);
     $("#search_reviews").text(cloud_term_search_parameter);
     
 }
