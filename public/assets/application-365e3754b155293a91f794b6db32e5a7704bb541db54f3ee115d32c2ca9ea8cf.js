@@ -11723,9 +11723,9 @@ function nlpNgramLengthClick(){
      $("#npl_ngram_length").click(function() {
             $(".ngram_table").remove();
             $(".fa-pulse").css("visibility", "visible");
-            showSpinnerOverlay(this);
-            nlpNgramsLength();
-     });
+            var f1 = showSpinnerOverlay(this);
+             nlpNgramsLength(); // Alerts "123"
+    });
 }
 
 function nlpNgramStarsClick(){
@@ -11816,6 +11816,7 @@ function nlpNgramsStars(){
 function nlpNgramsLength(){
         //================= NGRAMS BY LENGTH=====================
         var ngram_drop_in_text = $("#ngramDropIn").val().toLowerCase().replace(/[^a-zA-Z 0-9]+/g, '');
+        console.log(ngram_drop_in_text);
         $("#ngramDropIn").val('');
         console.log(ngram_drop_in_text.length);
         //if drop-in text exists, use that
@@ -11887,9 +11888,39 @@ function hideSpinnerOverlay(x){
         }
 }
 
+// getting URL parameters from clicked cloud term
+function getURLParameters(){
+    var getUrlParameter = function getUrlParameter(sParam) {
+        var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+            sURLVariables = sPageURL.split('&'),
+            sParameterName,
+            i;
+
+        for (i = 0; i < sURLVariables.length; i++) {
+            sParameterName = sURLVariables[i].split('=');
+
+            if (sParameterName[0] === sParam) {
+                return sParameterName[1] === undefined ? true : sParameterName[1];
+            }
+        }
+    };
+    var cloud_term_search_parameter = getUrlParameter('search_reviews');
+    // $("#search_reviews").attr("placeholder", cloud_term_search_parameter);
+    $("#search_reviews").text(cloud_term_search_parameter);
+    
+}
+
+
+
 
 function starSubmit(){
     $("#starSubmit").click(function(){
+        ga('send', {
+          hitType: 'event',
+          eventCategory: 'Wordclouds',
+          eventAction: 'Made Cloud',
+          eventLabel: '1 Cloud'
+        });
         console.log("star_Submit");
         console.log(stars);
         called_this_cloud = false;
@@ -12451,6 +12482,7 @@ deleteCloud();
 cloud_term_search();
 // starPhraseButton();
 showChoice();
+getURLParameters();
 storeISBN();
 shelvesCount();
 monkeyCall();
