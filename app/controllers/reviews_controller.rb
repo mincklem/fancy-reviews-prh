@@ -298,7 +298,7 @@ def index
   	@reviews_monkey = Review.where("isbn LIKE '%#{@goodreads_id}%'")
   	@all_reviews_array = []
   	@reviews_monkey.each do |review|
-		@text = review.review_text.downcase.gsub(/[^0-9a-z ]/i, '')
+		@text = review.review_text.downcase.gsub(/[^0-9a-z ]/i, '').gsub("  ", " ")
 		@star = review.star_rating
 		@all_reviews_array.push(@text)
 	end
@@ -306,57 +306,73 @@ def index
 	# EXCLUDE TITLE AND AUTHOR 
 	# @exclude_array = [session[:author].split(" ").concat(session[:title].split(" "))]
 	@exclude_array = params[:thematic_excludes].downcase.split(' ')
-
-	# @exclude_array.collect{|x| x.strip}
-	@exclude_array.each do |term|
-		dwn_term = term.downcase.gsub(/[^a-z0-9\s]/i, '')
-		@all_reviews_text = @all_reviews_text.gsub(dwn_term, " ")
-	end
-	
+	@title = session[:title].split(' ')
+	@author = session[:author].split(' ')
+	@exclude_array.push(@title)
+	@exclude_array.push(@author)
+	@exclude_array = @exclude_array.flatten
 	@all_reviews_cleaned_array = @all_reviews_text.split(",")
-
+puts @all_reviews_text
 # LDA EXPERIMENT
-	# corpus = Lda::Corpus.new
-	# # @all_reviews_cleaned_array.each do |review|
-	# # corpus.add_document(Lda::TextDocument.new(corpus, review))
-	# # end
-	# corpus.add_document(Lda::TextDocument.new(corpus, @all_reviews_text))
-	# lda = Lda::Lda.new(corpus)
-	# lda.verbose = false
-	# lda.num_topics = (3)
-	# lda.em('random')
-	# topics = lda.top_words(3)
-	# puts topics
-	# puts lda
-	# @keywords_pass = topics
+# 	corpus = Lda::Corpus.new
+# 	# @all_reviews_cleaned_array.each do |review|
+# 	# corpus.add_document(Lda::TextDocument.new(corpus, review))
+# 	# end
+# 	corpus.add_document(Lda::TextDocument.new(corpus, @all_reviews_text))
+# 	lda = Lda::Lda.new(corpus)
+# 	lda.verbose = false
+# 	lda.num_topics = (3)
+# 	lda.em('random')
+# 	topics = lda.top_words(3)
+# 	puts topics
+# 	puts lda
+# 	@keywords_pass = topics
 # END LDA EXPERIMENT 
 
 
+#################  tf-idf-similarity EXPERIMENT - mckinney ###############
+@strict_stopwords = $stop_words + $strict_stopwords
+@strict_stopwords = @strict_stopwords.split(' ')
+document1 = TfIdfSimilarity::Document.new(@all_reviews_text)
+corpus = [document1]
+model = TfIdfSimilarity::TfIdfModel.new(corpus)
+matrix = model.similarity_matrix
+tfidf_by_term = {}
+document1.terms.each do |term|
+	# exclude stopwords and cut single letter terms
+	if @strict_stopwords.include?(term) == false && @exclude_array.include?(term) == false && term.length>2
+  		tfidf_by_term[term] = model.tfidf(document1, term)
+ 	end
+end
+	@keywords_pass = tfidf_by_term.sort_by{|_,tfidf| -tfidf}.first(30)
+
+#################  END TF-IDF EXPERIMENT - REDDAVIS###############
+
 # HIGHSCORE EXPERIMENT
 
-	blacklist = Highscore::Blacklist.load $stop_words
+	# blacklist = Highscore::Blacklist.load $stop_words
 
-	terms = Highscore::Content.new @all_reviews_text, blacklist
-	terms.configure do
-	  set :multiplier, 2
-	  set :upper_case, 3
-	  set :long_words, 2
-	  set :long_words_threshold, 15
-	  set :short_words_threshold, 3      # => default: 2
-	  set :bonus_multiplier, 2           # => default: 3
-	  set :vowels, 1                     # => default: 0 = not considered
-	  set :consonants, 5                 # => default: 0 = not considered
-	  set :ignore_case, true             # => default: false
-	  set :word_pattern, /[\w]+[^\s0-9]/ # => default: /\w+/
-	  set :stemming, false                # => default: false
-	end
+	# terms = Highscore::Content.new @all_reviews_text, blacklist
+	# terms.configure do
+	#   set :multiplier, 2
+	#   set :upper_case, 3
+	#   set :long_words, 2
+	#   set :long_words_threshold, 15
+	#   set :short_words_threshold, 3      # => default: 2
+	#   set :bonus_multiplier, 2           # => default: 3
+	#   set :vowels, 1                     # => default: 0 = not considered
+	#   set :consonants, 5                 # => default: 0 = not considered
+	#   set :ignore_case, true             # => default: false
+	#   set :word_pattern, /[\w]+[^\s0-9]/ # => default: /\w+/
+	#   set :stemming, false                # => default: false
+	# end
 
-	@keywords_pass = []
+	# @keywords_pass = []
 
-	# get only the top 50 keywords
-	terms.keywords.top(30).each do |keyword|
-	  @keywords_pass.push([keyword.text, keyword.weight])   
-	end
+	# # get only the top 50 keywords
+	# terms.keywords.top(30).each do |keyword|
+	#   @keywords_pass.push([keyword.text, keyword.weight])   
+	# end
 
 # END HIGHSCORE EXPERIMENT
 
@@ -441,42 +457,6 @@ def index
 # puts results.sort_by { |k, v| v }.inspect
 
 #RUBY NLP END
-
-# Ruby Vector Space Model  TEST
-
-	# document1 = TfIdfSimilarity::Document.new(@all_reviews_pass)
-	# document2 = TfIdfSimilarity::Document.new(@all_reviews_pass)
-
-	# corpus = [document1, document2]
-
-	# # Create a document-term matrix using Term Frequency-Inverse Document Frequency function:
-
-	# model = TfIdfSimilarity::TfIdfModel.new(corpus)
-	# # Or, create a document-term matrix using the Okapi BM25 ranking function:
-
-	# model = TfIdfSimilarity::BM25Model.new(corpus)
-	# # Create a similarity matrix:
-
-	# matrix = model.similarity_matrix
-	# # Find the similarity of two documents in the matrix:
-
-	# matrix[model.document_index(document1), model.document_index(document2)]
-	# # Print the tf*idf values for terms in a document:
-
-	# tfidf_by_term = {}
-	# document1.terms.each do |term|
-	#   tfidf_by_term[term] = model.tfidf(document1, term)
-	# end
-	# puts tfidf_by_term.sort_by{|_,tfidf| -tfidf}
-
-	# # Tokenize a document yourself, for example by excluding stop words:
-
-	# require 'unicode_utils'
-	# text = "Lorem ipsum dolor sit amet..."
-	# tokens = UnicodeUtils.each_word(text).to_a - ['and', 'the', 'to']
-	# document1 = TfIdfSimilarity::Document.new(text, :tokens => tokens)
-
-# Ruby Vector Space Model END
 
   	respond_to do |format|
 		format.json { render json: @keywords_pass }

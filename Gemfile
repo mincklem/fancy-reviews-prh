@@ -59,8 +59,6 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
  gem 'lda-ruby'
 
- gem 'matrix'
-
  gem 'tf-idf-similarity'
 
  gem 'ruby_nlp'

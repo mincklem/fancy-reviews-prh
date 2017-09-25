@@ -144,11 +144,13 @@
           </div>
           <div role="tabpanel" aria-labelledby="themesTab" class="tab-pane fade" id="themes">
             <div id="monkey_themes">
-            <button id="themes_pull">Get Keywords</button>
-            <p>Exclude words (space separated): <input type="text" name="fname" id="thematic_excludes" value="read star book author review"></p>
+            <h1>Keyword Analysis</h1>
+            <h4>Identifies the "most important" terms in all reviews for the selected title, attempting to emphasize the most significant terms in the reviews.  While these results often closely resemble the most frequent terms in the word cloud, other terms can surface here that pure frequency misses. For example, the phrase "Don't have a cow." This analysis will offset the commonality of terms like "don't" or "have" across the English language and emphasize less frequently used but more unique terms like "cow."</h4>
+            <a class="btn btn-default btn-md" id="themes_pull">Get Keywords</a>
+            <span>Exclude specific terms (space separated): <input type="text" name="fname" id="thematic_excludes" value="read star book author review"></span>
             </div>
             <div id="monkey_keywords">
-              <h1>Keyword Analysis</h1>
+              <h2>Keyword Results</h2>
               <canvas id="keywordsChart" width="1000px" height="600px"></canvas>
               <div class="spinnerBox" id="monkey_spinner">
                 <i class="fa fa-spinner fa-pulse fa-3x fa-fw margin-bottom" ></i>
