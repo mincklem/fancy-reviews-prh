@@ -294,6 +294,7 @@ def index
 
   
   def monkey
+  	puts "hitting monkey controller"
   	@goodreads_id = session[:isbn]
   	@reviews_monkey = Review.where("isbn LIKE '%#{@goodreads_id}%'")
   	@all_reviews_array = []
@@ -312,7 +313,7 @@ def index
 	@exclude_array.push(@author)
 	@exclude_array = @exclude_array.flatten
 	@all_reviews_cleaned_array = @all_reviews_text.split(",")
-puts @all_reviews_text
+	puts @all_reviews_text
 # LDA EXPERIMENT
 # 	corpus = Lda::Corpus.new
 # 	# @all_reviews_cleaned_array.each do |review|
@@ -331,6 +332,7 @@ puts @all_reviews_text
 
 
 #################  tf-idf-similarity EXPERIMENT - mckinney ###############
+puts "hitting tf-idf function"
 @strict_stopwords = $stop_words + $strict_stopwords
 @strict_stopwords = @strict_stopwords.split(' ')
 document1 = TfIdfSimilarity::Document.new(@all_reviews_text)
