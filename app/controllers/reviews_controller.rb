@@ -332,7 +332,7 @@ def index
 
 
 #################  tf-idf-similarity EXPERIMENT - mckinney ###############
-puts "hitting tf-idf function"
+
 @strict_stopwords = $stop_words + $strict_stopwords
 @strict_stopwords = @strict_stopwords.split(' ')
 document1 = TfIdfSimilarity::Document.new(@all_reviews_text)
