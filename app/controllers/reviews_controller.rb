@@ -17,6 +17,7 @@ class ReviewsController < ApplicationController
 	require 'ruby_nlp/corpus_files/brown'
 	require 'matrix'
 	require 'tf-idf-similarity'
+	require 'monkeylearn'
 
 
 def index
@@ -313,7 +314,6 @@ def index
 	@exclude_array.push(@author)
 	@exclude_array = @exclude_array.flatten
 	@all_reviews_cleaned_array = @all_reviews_text.split(",")
-	puts @all_reviews_text
 # LDA EXPERIMENT
 # 	corpus = Lda::Corpus.new
 # 	# @all_reviews_cleaned_array.each do |review|
@@ -330,6 +330,12 @@ def index
 # 	@keywords_pass = topics
 # END LDA EXPERIMENT 
 
+Monkeylearn.configure do |c|
+  c.token = '21bac9c91a9c7a8b926d892b4f95c2743ab3d89b'
+end
+
+r = Monkeylearn.extractors.extract('ex_EjosnyKK', [@all_reviews_text])
+puts r.result
 
 #################  tf-idf-similarity EXPERIMENT - mckinney ###############
 

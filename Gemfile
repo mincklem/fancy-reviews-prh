@@ -31,6 +31,8 @@ gem 'graph-rank'
 
 gem 'rake_text'
 
+gem 'monkeylearn'
+
 gem 'json', '~> 1.8.2'
 
 gem 'fastercsv', '~> 1.5.5'
