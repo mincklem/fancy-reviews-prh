@@ -330,12 +330,12 @@ def index
 # 	@keywords_pass = topics
 # END LDA EXPERIMENT 
 
-Monkeylearn.configure do |c|
-  c.token = '21bac9c91a9c7a8b926d892b4f95c2743ab3d89b'
-end
+# Monkeylearn.configure do |c|
+#   c.token = '21bac9c91a9c7a8b926d892b4f95c2743ab3d89b'
+# end
 
-r = Monkeylearn.extractors.extract('ex_EjosnyKK', [@all_reviews_text])
-puts r.result
+# r = Monkeylearn.extractors.extract('ex_EjosnyKK', [@all_reviews_text])
+# puts r.result
 
 #################  tf-idf-similarity EXPERIMENT - mckinney ###############
 
@@ -480,6 +480,7 @@ end
 		@result_count = @json["GoodreadsResponse"]["search"]["results_end"].to_i
 		@returned_books = @json["GoodreadsResponse"]["search"]["results"]["work"]
 		puts @result_count
+		puts @returned_books
 		# puts @returned_books
   end
 
