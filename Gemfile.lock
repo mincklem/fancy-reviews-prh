@@ -43,7 +43,6 @@ GEM
       debug_inspector (>= 0.0.1)
     builder (3.2.3)
     byebug (9.1.0)
-    categorize (0.0.12)
     cld (0.7.0)
       ffi
     coffee-rails (4.1.1)
@@ -69,7 +68,6 @@ GEM
     execjs (2.7.0)
     faraday (0.13.1)
       multipart-post (>= 1.2, < 3)
-    faroo (0.0.3)
     fast-stemmer (1.0.2)
     fastercsv (1.5.5)
     ffi (1.9.18)
@@ -217,11 +215,9 @@ PLATFORMS
 DEPENDENCIES
   ai4r
   byebug
-  categorize
   cld
   coffee-rails (~> 4.1.0)
   devise
-  faroo
   fast-stemmer
   fastercsv (~> 1.5.5)
   graph-rank
