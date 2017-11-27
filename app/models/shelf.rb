@@ -1,18 +1,21 @@
+
 class Shelf < ActiveRecord::Base
+
 
 	def self.get_shelves(isbn)
 		@isbn = isbn
 		puts "hitting shelves"
 	  puts @isbn
 	  @shelves_hash = ShelvesApi.call_shelves(@isbn)
-	  puts @shelves_hash
 		if @shelves_hash["status"] = false
         puts "bad Goodreads"
         @status = {:status => false}
         return @status
     else
+    @shelf_names_array = []
         @new = Shelf.new
         @shelves_hash.each do |key, value|
+           @shelf_names_array.push (key)
           if value != false
             @added_shelf = Shelf.create(
             isbn: @isbn.to_i,
@@ -21,7 +24,9 @@ class Shelf < ActiveRecord::Base
           end
         end
     end
-	end
+  end
+
+
 
 	def self.count_shelves(isbn)
 		@isbn = isbn
@@ -36,6 +41,7 @@ class Shelf < ActiveRecord::Base
 		end
 		  puts @all_hash
 		  #Category Roll-up Counts
+      @music_count = 0
       @thriller_count = 0
       @evanovich_count = 0
       @philosophy_count = 0
@@ -67,7 +73,7 @@ class Shelf < ActiveRecord::Base
       @child_count = 0
       @hist_count = 0
       @bookclub_count = 0
-      @england_scotland_count = 0
+      @european_countries_count = 0
       @culture_count = 0 
       @contemp_count = 0
       @spy_count = 0
@@ -100,6 +106,9 @@ class Shelf < ActiveRecord::Base
       @tech_count = 0
       @plantagenet_count = 0
       @royals_count = 0
+      @leadership_count = 0
+      @creativity_count = 0
+      @popculture_count = 0
   		#Category Roll-up search functions
       @evanovich = Shelf.where(isbn: @isbn).where("shelves LIKE '%evanovich%'")
       @evanovich.each do |this|
@@ -109,7 +118,15 @@ class Shelf < ActiveRecord::Base
   		@scifi = Shelf.where(isbn: @isbn).where("shelves LIKE '%scifi%' OR shelves LIKE '%sci-fi%' OR shelves LIKE '%sci/fi%' OR shelves LIKE '% scifi %'")
   		@scifi.each do |this|
   			@sci_count = @sci_count + this.value.to_i
-  		end
+      end
+  		@music = Shelf.where(isbn: @isbn).where("shelves LIKE '%music%' OR shelves LIKE '%rock%' OR shelves LIKE '%ballad%' OR shelves LIKE '%song%'")
+      @music.each do |this|
+        @music_count = @music_count + this.value.to_i
+      end
+          @popculture = Shelf.where(isbn: @isbn).where("shelves LIKE '%pop culture%' OR shelves LIKE '%pop-culture%' OR shelves LIKE '%popular culture%'OR shelves LIKE '%pop_culture%'")
+      @popculture.each do |this|
+        @popculture_count = @popculture_count + this.value.to_i
+      end
       @awards = Shelf.where(isbn: @isbn).where("shelves LIKE '%award%' OR shelves LIKE '%nationa book%' OR shelves LIKE '%national-book%' OR shelves LIKE '%pulitzer%' OR shelves LIKE '%booker%' OR shelves LIKE '%nationabl book%'")
       @awards.each do |this|
         @awards_count = @awards_count + this.value.to_i
@@ -283,9 +300,9 @@ class Shelf < ActiveRecord::Base
         @bookclub_count = @bookclub_count + this.value.to_i
       
       end
-      @england_scotland = Shelf.where(isbn: @isbn).where("shelves LIKE '%brit%' OR shelves LIKE '%engl%' OR shelves LIKE '%scotland%' OR shelves LIKE '%scottish%' OR shelves LIKE '%euro%' OR shelves LIKE '%uk%'")
-      @england_scotland.each do |this|
-        @england_scotland_count = @england_scotland_count + this.value.to_i
+      @european_countries = Shelf.where(isbn: @isbn).where("shelves LIKE '%brit%' OR shelves LIKE '%engl%' OR shelves LIKE '%scotland%' OR shelves LIKE '%scottish%' OR shelves LIKE '%euro%' OR shelves LIKE '%uk%' OR shelves LIKE '%italy%' OR shelves LIKE '%germany%' OR shelves LIKE '%ireland%'")
+      @european_countries.each do |this|
+        @european_countries_count = @european_countries_count + this.value.to_i
       
       end
          @contemp = Shelf.where(isbn: @isbn).where("shelves LIKE '%contemp%' OR shelves LIKE '%modern%'")
@@ -393,24 +410,34 @@ class Shelf < ActiveRecord::Base
         @gay.each do |this|
         @gay_count =  @gay_count + this.value.to_i
     end
-
-
+              @creativity = Shelf.where(isbn: @isbn).where("shelves LIKE '%creat%'")
+        @creativity.each do |this|
+        @creativity_count =  @creativity_count + this.value.to_i
+    end
+                @leadership = Shelf.where(isbn: @isbn).where("shelves LIKE '%creat%'")
+        @leadership.each do |this|
+        @leadership_count =  @leadership_count + this.value.to_i
+    end
 
 
   		@search_result = {:Science_Fiction => @sci_count, 
+        :Music=> @music_count,
+        :Pop_Culture=> @popculture_count,
+        :Creativity => @creativity_count,
+        :Leadership => @leadership_count,
         :Graphic_Novel => @graphic_novel_count, 
         :LGBT => @gay_count,
         :Plantaget=>@plantagenet_count,
         :Tudors=>@tudors_count,
         :Royals_Monarchy=>@royals_count,
-        :England_Scotland=>@england_scotland_count,
+        :European_Countries=>@european_countries_count,
         :Janet_Evanovich=>@evanovich_count,
         :Technology=>@tech_count,
         :Politics_Economics=>@politics_count,
         :Philosophy=>@philosophy_count,
         :Race_Diversity=>@race_count,
         :Society_Culture=>@society_culture_count,
-  			:Romance => @rom_count,
+  			:Romance_Sex => @rom_count,
         :Ebook => @ebook_count,
         :Thriller=>@thriller_count,
   			:Mystery=> @mys_count,
@@ -457,7 +484,7 @@ class Shelf < ActiveRecord::Base
         :Spirituality=>@spiritual_count,
         :Jane_Austen=>@janeausten_count,
         :Celebrity=>@celebrity_count,
-        :Busines=>@business_count,
+        :Business=>@business_count,
         :Science=>@science_count
   		}
   		puts @search_result
