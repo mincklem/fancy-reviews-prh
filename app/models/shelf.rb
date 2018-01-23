@@ -27,7 +27,6 @@ class Shelf < ActiveRecord::Base
   end
 
 
-
 	def self.count_shelves(isbn)
 		@isbn = isbn
 		@all_shelves = Shelf.where(isbn: @isbn)
@@ -95,7 +94,6 @@ class Shelf < ActiveRecord::Base
       @audio_count = 0
       @susp_count = 0
       @cozy_count = 0
-      @spiritual_count = 0
       @celebrity_count = 0
       @business_count = 0
       @paranormal_count = 0
@@ -115,7 +113,7 @@ class Shelf < ActiveRecord::Base
         @evanovich_count = @evanovich_count + this.value.to_i
       end
   		#Science Fiction
-  		@scifi = Shelf.where(isbn: @isbn).where("shelves LIKE '%scifi%' OR shelves LIKE '%sci-fi%' OR shelves LIKE '%sci/fi%' OR shelves LIKE '% scifi %'")
+  		@scifi = Shelf.where(isbn: @isbn).where("shelves LIKE '%scifi%' OR shelves LIKE '%sci-fi%' OR shelves LIKE '%science fiction%' OR shelves LIKE '%science-fiction%' OR shelves LIKE '%sff%' OR shelves LIKE '%sci/fi%' OR shelves LIKE '% scifi %'")
   		@scifi.each do |this|
   			@sci_count = @sci_count + this.value.to_i
       end
@@ -373,7 +371,7 @@ class Shelf < ActiveRecord::Base
         @marriage.each do |this|
         @marriage_count =  @marriage_count + this.value.to_i
     end
-        @religion = Shelf.where(isbn: @isbn).where("shelves LIKE '%religi%' OR shelves LIKE '%scientology%' OR shelves LIKE '%christian%' OR shelves LIKE '%faith%' OR shelves LIKE '%god%'")
+        @religion = Shelf.where(isbn: @isbn).where("shelves LIKE '%religi%' OR shelves LIKE '%spirit%' OR shelves LIKE '%scientology%' OR shelves LIKE '%christ%' OR shelves LIKE '%faith%' OR shelves LIKE '%god%'")
         @religion.each do |this|
         @religion_count =  @religion_count + this.value.to_i
     end
@@ -389,10 +387,6 @@ class Shelf < ActiveRecord::Base
            @janeausten = Shelf.where(isbn: @isbn).where("shelves LIKE '%austen%'")
         @janeausten.each do |this|
         @janeausten_count =  @janeausten_count + this.value.to_i
-    end
-        @spiritual = Shelf.where(isbn: @isbn).where("shelves LIKE '%spiritual%'")
-        @spiritual.each do |this|
-        @spiritual_count =  @spiritual_count + this.value.to_i
     end
            @philosophy = Shelf.where(isbn: @isbn).where("shelves LIKE '%philosoph%'")
         @philosophy.each do |this|
@@ -478,10 +472,9 @@ class Shelf < ActiveRecord::Base
         :Marriage_Family=>@marriage_count,
         :Book_Awards=>@awards_count,
         :Magic=>@mag_count,
-        :Religion=>@religion_count,
+        :Spirituality_Religion=>@religion_count,
         :Audio_Book=>@audio_count,
         :Cozy=>@cozy_count,
-        :Spirituality=>@spiritual_count,
         :Jane_Austen=>@janeausten_count,
         :Celebrity=>@celebrity_count,
         :Business=>@business_count,

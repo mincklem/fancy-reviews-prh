@@ -5,7 +5,7 @@ module ShelvesApi
 	  		@json = JSON.load(Hash.from_xml(xml).to_json)
 	  		@work_id = @json["GoodreadsResponse"]["book"]["work"]["id"]
 	  		@shelves_all_pages = {}
-	   		5.times do |num|
+	   		6.times do |num|
 	  			import_api = "https://extraction.import.io/query/extractor/15359ba3-d4dd-450f-8ddc-a3925cbe5985?_apikey=793a9ecf8f8b4820bfbc41ef04962052ed3ee89485777d9173b742c41819f043b274cd1e574db22f8d43a02717c979504c91d8617c630cf0529c8306ca59beecea55014e913acdc8b38cf4ee5e526a66&url=https%3A%2F%2Fwww.goodreads.com%2Fwork%2Fshelves%2F#{@work_id}%3Fpage%3D#{num+1}"
 	  			puts import_api
 	  			@response = JSON.load(RestClient.get(import_api))

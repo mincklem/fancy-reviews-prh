@@ -59,7 +59,7 @@ module ReviewApi
 			@gr_reviews_array = []
 			@isbn = isbn
 			counter = 0
-			2.times do |num|
+			5.times do |num|
 				@api_url = "http://www.fanpagelist.com/analytics/reviews.php?api_key=91bee4c36&q=#{@isbn}&search_type=book_id&result_type=goodreads&page=#{num+1}"
 				response = JSON.load(RestClient.get(@api_url))
 				puts @api_url
