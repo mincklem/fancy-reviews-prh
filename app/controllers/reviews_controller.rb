@@ -51,6 +51,7 @@ def index
 			  			@pulled_month = recent_title[4].split(" ")[0]
 			  			if @pulled_month.to_s == @this_month.to_s
 			  				@this_month_count+=1
+			  				
 			  			end
 		  			end
 	  			else 

@@ -59,33 +59,63 @@ module ReviewApi
 			@gr_reviews_array = []
 			@isbn = isbn
 			counter = 0
-			5.times do |num|
-				@api_url = "http://www.fanpagelist.com/analytics/reviews.php?api_key=91bee4c36&q=#{@isbn}&search_type=book_id&result_type=goodreads&page=#{num+1}"
-				response = JSON.load(RestClient.get(@api_url))
-				puts @api_url
-				puts "++++++++++++++++++" 
-				puts response.length
-				if response.length == 0
-					puts "no more reviews"
-			   		return @gr_reviews_array
-			  	else
-			  		response.each do |rev|
-			  			#check if ENGLISh via CLD gem
-			  			lang = CLD.detect_language(rev)
-			  			if lang[:name] == "ENGLISH" && lang[:reliable] == true
-			  		   		mapped_review = {
-			    			isbn: @isbn,
-			    			rating: rev["rating"],
-			    			review_text: rev["review_text"],
-			    			user: rev["user"],
-			    			date: rev["date"],
-			    			platform: "Goodreads"}
-			    			@gr_reviews_array.push(mapped_review)
-			    		end
+		#get GR reviews by stars
+			6.times do |star_rating_counter|
+				puts "pulling Goodreads Star #{star_rating_counter+1}"
+				2.times do |num|
+					#final call for all reviews by LIKES
+					if star_rating_counter+1 == 6
+						@api_url = "http://www.fanpagelist.com/analytics/reviews.php?api_key=91bee4c36&q=#{@isbn}&search_type=book_id&result_type=goodreads&page=#{num+1}"
+						response = JSON.load(RestClient.get(@api_url))
+						puts @api_url
+						puts "++++++++++++++++++" 
+						puts response.length
+					  		response.each do |rev|
+					  			#check if ENGLISh via CLD gem
+					  			lang = CLD.detect_language(rev)
+					  			if lang[:name] == "ENGLISH" && lang[:reliable] == true
+					  		   		mapped_review = {
+					    			isbn: @isbn,
+					    			rating: rev["rating"],
+					    			review_text: rev["review_text"],
+					    			user: rev["user"],
+					    			date: rev["date"],
+					    			platform: "Goodreads"}
+					    			@gr_reviews_array.push(mapped_review)
+					    		end
+							end
+			
+						puts "pulled Goodreads page #{num+1}"
+					#CALLS FOR REVIEWS BY STAR RATINGS - STAR RATING COUNTER UNDER 6
+					else
+						@api_url = "http://www.fanpagelist.com/analytics/reviews.php?api_key=91bee4c36&q=#{@isbn}&search_type=book_id&result_type=goodreads&page=#{num+1}&rating=#{star_rating_counter+1}"
+						response = JSON.load(RestClient.get(@api_url))
+						puts @api_url
+						puts "++++++++++++++++++" 
+						puts response.length
+						if response.length == 0
+							puts "no more reviews"
+					   		return @gr_reviews_array
+					  	else
+					  		response.each do |rev|
+					  			#check if ENGLISh via CLD gem
+					  			lang = CLD.detect_language(rev)
+					  			if lang[:name] == "ENGLISH" && lang[:reliable] == true
+					  		   		mapped_review = {
+					    			isbn: @isbn,
+					    			rating: rev["rating"],
+					    			review_text: rev["review_text"],
+					    			user: rev["user"],
+					    			date: rev["date"],
+					    			platform: "Goodreads"}
+					    			@gr_reviews_array.push(mapped_review)
+					    		end
+							end
+						end
+		
+						puts "pulled Goodreads page #{num+1}"
 					end
 				end
-			counter = counter+1
-			puts "pulled Goodreads #{counter}"
 			end
 		@gr_reviews_array
 		end
