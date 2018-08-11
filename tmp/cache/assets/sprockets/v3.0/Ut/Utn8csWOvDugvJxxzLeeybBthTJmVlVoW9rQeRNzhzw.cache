@@ -1,0 +1,76 @@
+{:uriI"—file://app/assets/javascripts/table2excel-master/package.json?type=application/json&id=1f140ae5119a3d4da50044a810476353be0514dcce24932f3c4d23742bc7d980:ET:load_pathI"app/assets/javascripts;T:filenameI";app/assets/javascripts/table2excel-master/package.json;T:	nameI"table2excel-master/package;T:logical_pathI"$table2excel-master/package.json;T:content_typeI"application/json;T:sourceI"2{
+  "name": "table2excel",
+  "version": "1.0.4",
+  "description": "convert and download html tables to a xlsx-file that can be opened in Microsoft Excel",
+  "keywords": [
+    "html table",
+    "table",
+    "export",
+    "convert",
+    "download",
+    "file",
+    "xls",
+    "xlsx",
+    "microsoft",
+    "excel"
+  ],
+  "author": {
+    "name": "Matthias Fey",
+    "email": "matthias.fey@tu-dortmund.de",
+    "url": "http://rusty1s.github.io"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/rusty1s/table2excel.git"
+  },
+  "license": "MIT",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://www.opensource.org/licenses/MIT"
+    }
+  ],
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "http://github.com/rusty1s/table2excel/issues"
+  },
+  "main": "dist/table2excel.js",
+  "scripts": {
+    "start": "webpack",
+    "lint": "eslint webpack.config.babel.js src test",
+    "test": "npm start && mocha --compilers js:babel-register"
+  },
+  "devDependencies": {
+    "babel-core": "^6.10.4",
+    "babel-loader": "^6.2.4",
+    "babel-plugin-transform-array-from": "^1.0.0",
+    "babel-plugin-transform-object-assign": "^6.8.0",
+    "babel-plugin-transform-runtime": "^6.9.0",
+    "babel-plugin-transform-strict-mode": "^6.11.3",
+    "babel-polyfill": "^6.9.1",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-register": "^6.9.0",
+    "babel-runtime": "^6.9.2",
+    "chai": "^3.5.0",
+    "eslint": "^2.9.0",
+    "eslint-config-airbnb": "^9.0.1",
+    "eslint-plugin-import": "^1.10.2",
+    "eslint-plugin-jsx-a11y": "^1.2.2",
+    "eslint-plugin-react": "^5.2.2",
+    "jsdom": "^9.4.1",
+    "jsdom-global": "^2.0.0",
+    "mocha": "^3.0.0",
+    "mocha-jsdom": "^1.1.0",
+    "script-loader": "^0.7.0",
+    "webpack": "^1.13.1"
+  },
+  "dependencies": {
+    "filesaver.js": "^0.2.0",
+    "xlsx-style": "^0.8.13"
+  }
+}
+;T:metadata{	:dependencieso:Set:
+@hash{
+I"environment-version;TTI"environment-paths;TTI"rails-env;TTI"@processors:type=application/json&file_type=application/json;TTI"Ifile-digest://app/assets/javascripts/table2excel-master/package.json;TT:charsetI"
+utf-8;F:digest"%ixP8ö—ªßÒÒD'å/¼¸¡³3kw 	U´,}7:lengthi2:dependencies_digest"%Ú[@Q:-$ÝR">àD&†U¿Q€Z³q=ås:idI"E1f140ae5119a3d4da50044a810476353be0514dcce24932f3c4d23742bc7d980;F:
+mtimel+ÀºOX

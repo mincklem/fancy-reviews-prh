@@ -24,6 +24,19 @@ function callReviews() {
     })
 }
 
+function export2Excelbutton(){
+    $("#export2Excel").click(function(){ 
+        console.log("init excel export")
+        export2Excel();
+    
+    })
+}
+
+function export2Excel(){
+   var table2excel = new Table2Excel();
+  table2excel.export(document.querySelectorAll("#summarytable"));
+}
+
 function checkReviews () {
     console.log("checking reviews");
         // just a control var...
@@ -906,6 +919,7 @@ function graphMonkey(result) {
 // }
 
 admin();
+export2Excelbutton();
 quickDashLinks();
 deleteCloud();
 cloud_term_search();
