@@ -25,16 +25,25 @@ function callReviews() {
 }
 
 function export2Excelbutton(){
-    $("#export2Excel").click(function(){ 
-        console.log("init excel export")
-        export2Excel();
+   $('.export2Excel').click(function(x) {
+        console.log("init excel export");
+        export2Excel(this.id);
     
     })
 }
 
-function export2Excel(){
+function export2Excel(x){
+    console.log(x.id)
+    var id = x;
    var table2excel = new Table2Excel();
-  table2excel.export(document.querySelectorAll("#summarytable"));
+   if (id=="exportReviews") {
+    console.log('exporting reviews');
+     table2excel.export(document.querySelectorAll("#summarytable"));
+    } else {
+        console.log('exporting cloud table');
+        var lastChar = id[id.length -1];
+        table2excel.export(document.querySelectorAll("#term_table"+lastChar+""));
+    }
 }
 
 function checkReviews () {
@@ -461,7 +470,7 @@ function makeCloud(terms) {
             });
         $(".wordCloudsBox").prepend("<div class='cloudBox' id='cloudBox"+n+"'><div id='cloudTitle' class='cloud_details'>"+chosenTitle+" by "+chosenAuthor+"</div><br><div class='cloud_details' id='cloudStats'> Reviews Sampled: "+terms[0]+" | Star Ratings: "+short_stars+" | Excluding Terms: "+user_excludes+"</div><div class='cloudx'>x</div><div class=cloudtablecontainer id='cloudtablecontainer"+n+"'><div class='cloud' id='cloud"+n+"'></div></div></div>");
       } else { 
-     $(".wordCloudsBox").prepend("<div class='cloudBox' id='cloudBox"+n+"'><div id='cloudTitle' class='cloud_details'>"+chosenTitle+" by "+chosenAuthor+"</div><br><div class='cloud_details' id='cloudStats'> Reviews Sampled: "+terms[0]+" | Star Ratings: All | Excluding Terms: "+user_excludes+"</div><div class='cloudx'>x</div><div class=cloudtablecontainer id='cloudtablecontainer"+n+"'><div class='cloud' id='cloud"+n+"'></div></div></div>");
+     $(".wordCloudsBox").prepend("<div class='cloudBox' id='cloudBox"+n+"'><div id='cloudTitle' class='cloud_details'>"+chosenTitle+" by "+chosenAuthor+"</div><br><div class='cloud_details' id='cloudStats'> Reviews Sampled: "+terms[0]+" | Star Ratings: All | Excluding Terms: "+user_excludes+"</div><div class='cloudx'>x</div><button id='exportCloudTable"+n+"' class='export2Excel btn btn-default btn-md'>Export to Excel</button><div class=cloudtablecontainer id='cloudtablecontainer"+n+"'><div class='cloud' id='cloud"+n+"'></div></div></div>");
     }
     //table of wordcounts
     var term_array = [];
@@ -469,6 +478,7 @@ function makeCloud(terms) {
     var data_vals = [];
     var data_star_avgs = []
         $("#cloudtablecontainer"+n+"").append("<table class='table table-hover terms_table' id='term_table"+n+"'><thead><strong><th>Term</th><th>Frequency</th><th>% of Terms</th></strong></thead><tbody></tbody></table>")
+        export2Excelbutton();
     // $("#cloudtablecontainer"+n+"").append("<table class='table table-hover terms_table' id='term_table"+n+"'><thead><strong><th>Term</th><th>Frequency</th><th>% of Terms</th><th>Avg Star Rating</th></strong></thead><tbody></tbody></table>")
     $.each(clean_terms.reverse(), function(i, val){
         $.each(val, function(a, b){
