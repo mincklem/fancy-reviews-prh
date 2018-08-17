@@ -513,8 +513,8 @@ function makeCloud(terms) {
  var short_clean_terms = clean_terms.splice(0,75);
  $("#cloud"+n+"").jQCloud(short_clean_terms, {
     height:450,
-    width:650,
-    autoResize:false,
+    width:635,
+    autoResize:true,
     // shape: "rectangular",
     colors: ["#800026", "#bd0026", "#e31a1c", "#fc4e2a", "#fd8d3c", "#feb24c", "#fed976", "#ffeda0", "#ffffcc"],
        });

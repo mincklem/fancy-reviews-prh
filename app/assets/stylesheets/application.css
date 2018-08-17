@@ -68,7 +68,7 @@ h1 {
 /*overriding jqcloud css file*/
 
 .cloudBox {
-  max-width: 1010px;
+  width: 1000px;
   position: relative;
   display: block;
   padding: 20px;
@@ -83,19 +83,6 @@ h1 {
     height: 400px;
 }
 
-/*
-div.jqcloud span.w10 { font-size: 540% !important; }
-div.jqcloud span.w9 { font-size: 480% !important; }
-div.jqcloud span.w8 { font-size: 430% !important ; }
-div.jqcloud span.w7 { font-size: 380% !important; }
-div.jqcloud span.w6 { font-size: 330% !important; }
-div.jqcloud span.w5 { font-size: 290% !important; }
-div.jqcloud span.w4 { font-size: 260% !important; }
-div.jqcloud span.w3 { font-size: 230% !important; }
-div.jqcloud span.w2 { font-size: 170% !important; }
-div.jqcloud span.w1 { font-size: 120% !important; }*/
-/*
-/*div.jqcloud span { padding: 4px !important; }*/
 
 .login_box {
   width: 300px;
@@ -142,8 +129,8 @@ div.jqcloud span.w1 { font-size: 120% !important; }*/
 }
 
 .cloudtablecontainer {
-      width: 1000px;
-
+/*      width: 1000px;
+*/
 }
 
 .mainContainer {
@@ -343,7 +330,7 @@ background-color:#E2E1E1;
   font-family: inherit !important;
   position: relative;
   display: inline-block;
-      width: 650px;
+      width: 635px;
       height:450px;
   overflow:visible;
 
