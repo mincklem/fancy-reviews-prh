@@ -1,0 +1,16 @@
+current directory: /Users/mminckle/dev/bewd_19_copy/vendor/bundle/ruby/2.2.0/gems/unf_ext-0.0.7.5/ext/unf_ext
+/Users/mminckle/.rvm/rubies/ruby-2.2.0/bin/ruby -r ./siteconf20181012-96306-of3awz.rb extconf.rb
+checking for main() in -lstdc++... yes
+creating Makefile
+
+current directory: /Users/mminckle/dev/bewd_19_copy/vendor/bundle/ruby/2.2.0/gems/unf_ext-0.0.7.5/ext/unf_ext
+make "DESTDIR=" clean
+
+current directory: /Users/mminckle/dev/bewd_19_copy/vendor/bundle/ruby/2.2.0/gems/unf_ext-0.0.7.5/ext/unf_ext
+make "DESTDIR="
+compiling unf.cc
+linking shared-object unf_ext.bundle
+
+current directory: /Users/mminckle/dev/bewd_19_copy/vendor/bundle/ruby/2.2.0/gems/unf_ext-0.0.7.5/ext/unf_ext
+make "DESTDIR=" install
+/usr/local/opt/coreutils/bin/ginstall -c -m 0755 unf_ext.bundle ./.gem.20181012-96306-58e596

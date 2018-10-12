@@ -1,0 +1,121 @@
+#!/usr/bin/env ruby
+
+require 'optparse'
+
+root = File.expand_path('../..', __FILE__)
+require File.join(root, %w[lib highscore])
+
+options = {
+    :emphasis => {},
+    :short => false
+}
+
+optparse = OptionParser.new do |opts|
+  opts.on('-h', '--help', 'display this help message') do
+    puts opts
+    exit
+  end
+
+  # blacklist file
+  opts.on('-b', '--blacklist FILEPATH', 'specify a blacklist file that should be used instead of the default') do |filepath|
+    options[:wordlist] = Highscore::Blacklist.load_file(filepath)
+  end
+
+  # whitelist file
+  opts.on('-w', '--whitelist FILEPATH', 'specify a whitelist file') do |filepath|
+    options[:wordlist] = Highscore::Whitelist.load_file(filepath)
+  end
+
+  # bonus word file
+  opts.on('--bonuslist FILEPATH', 'specify a bonus word file') do |filepath|
+    options[:bonus_list] = Highscore::Bonuslist.load_file(filepath)
+  end
+
+  # general multiplier
+  opts.on('-m', '--multiplier MULTIPLIER', 'set the global rank multiplier') do |multiplier|
+    options[:emphasis][:multiplier] = multiplier.to_f
+  end
+
+  # bonus multiplier
+  opts.on('--bonusmultiplier MULTIPLIER', 'set the bonus word multiplier') do |multiplier|
+    options[:emphasis][:bonus_multiplier] = multiplier.to_f
+  end
+
+  opts.on('--no-ignore-short', 'don\'t ignore short words (<= 2 chars)') do
+    options[:emphasis][:ignore_short_words] = false
+  end
+
+  opts.on('--ignore-case', 'case insensitive') do
+    options[:emphasis][:ignore_case] = true
+  end
+
+  opts.on('--stemming', 'use word stemming (won\'t work on JRuby platforms)') do
+    options[:emphasis][:stemming] = true
+  end
+
+  # upper case
+  opts.on('-u', '--uppercase MULTIPLIER', 'rank multiplier for uppercase words (default is 3.0)') do |u|
+    options[:emphasis][:upper_case] = u.to_f
+  end
+
+  # vowels
+  opts.on('--vowels MULTIPLIER', 'multiplier for vowels') do |u|
+    options[:emphasis][:vowels] = u.to_i
+  end
+
+  # vowels
+  opts.on('--consonants MULTIPLIER', 'multiplier for consonants') do |u|
+    options[:emphasis][:consonants] = u.to_i
+  end
+
+  # long words
+  opts.on('-l', '--longwords MULTIPLIER', 'rank multiplier for long words (default is 2.0)') do |u|
+    options[:emphasis][:long_words] = u.to_f
+  end
+
+  # long words threshold
+  opts.on('-t', '--longwordsthreshold THRESHOLD', 'threshold for long words (default is 15 chars)') do |u|
+    options[:emphasis][:long_words_threshold] = u.to_i
+  end
+
+  # short words threshold
+  opts.on('--shortwordsthreshold THRESHOLD', 'threshold for short words (default is 2 chars)') do |u|
+    options[:emphasis][:short_words_threshold] = u.to_i
+  end
+
+
+  opts.on('-n', '--top N', 'show only the top N keywords') do |u|
+    options[:top] = u.to_i
+  end
+
+  # don't print rank weight
+  opts.on('-s', '--short', 'don\'t print rank weight') do
+    options[:short] = true
+  end
+  
+  opts.on('-v', '--version', 'show version') do
+    puts Highscore::VERSION
+    exit
+  end
+end
+
+optparse.parse!
+
+text = STDIN.read.to_s
+keywords = text.keywords(options[:wordlist]) do |content|
+  options[:emphasis].each do |key,value|
+    content.set key, value
+  end
+end
+
+if options[:top]
+  keywords = keywords.top(options[:top])
+else
+  keywords = keywords.rank
+end
+
+keywords.each do |keyword|
+  print keyword.text
+  print " #{keyword.weight}" unless options[:short]
+  puts
+end

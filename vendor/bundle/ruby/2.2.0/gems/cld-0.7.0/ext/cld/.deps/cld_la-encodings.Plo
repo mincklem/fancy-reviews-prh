@@ -1,0 +1,6 @@
+cld_la-encodings.lo: encodings/internal/encodings.cc \
+  encodings/public/encodings.h encodings/proto/encodings.pb.h
+
+encodings/public/encodings.h:
+
+encodings/proto/encodings.pb.h:

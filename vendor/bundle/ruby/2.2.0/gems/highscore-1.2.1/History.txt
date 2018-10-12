@@ -1,0 +1,70 @@
+== 1.2.1 / 2016-08-23
+
+* removed hard dependency to bloomfilter-rb
+
+== 1.1.0 / 2013-04-
+
+* added support for custom word ignore handlers using lambda functions
+* fixed some performance issues with unnecessary ranking by unused criteria (consonants & vowels)
+* added possibility to use bloomfilters for faster performance instead of Array#include?
+* removed compatibility with Ruby 1.8.x
+
+== 1.0.0 / 2013-02-02
+
+* added per-language support for black- and whitelists (thanks to bobjflong)
+* added support for language recognition
+* fixed tokenization for UTF-8 strings (this is broken in Ruby 1.8.x!) (thanks to pdg)
+
+== 0.5.2 / 2012-02-25
+
+* added (optional) support for word stemming using the fast-stemmer gem
+* setting to enable/disable case-sensitivy (thanks to carlosramireziii)
+* use other regex patterns to cut the text in keywords (thanks to carlosramireziii)
+
+== 0.5.0 / 2012-02-20
+
+* now supports a whitelist approach
+* <= 2 char words are ignored by default, but is now configurable
+* refactored a huge part of the API
+* added some more inline-documentation
+
+== 0.4.3 / 2012-02-11
+
+* rate words based on the amount of vowels and consonants
+* added a CLI tool that uses all of the API (via parameters)
+
+== 0.4.2 / 2012-02-07
+
+* added a simple example that also shows return values in README.md
+* #7 fixed handling of keywords for Ruby 1.8.7 (thanks to undecided)
+
+== 0.4.1 / 2012-02-06
+
+* fixed handling of keywords that are actually Fixnums
+* fixed a typo in the README (thanks to snyff)
+
+== 0.4.0 / 2012-02-04
+
+* monkey-patched String to have a keywords method on it that takes the same arguments as Highscore::Content.new
+* merge multiple Keywords objects to one (e.g. from different sources)
+
+== 0.3.2 / 2012-01-27
+
+* use custom lists of ignored words (blacklist), fallback to a default list
+
+== 0.3.1 / 2012-01-21
+
+* refactored and threw away all that array stuff that nobody wants
+
+== 0.2.1 / 2012-01-15
+
+* added parameter multiplier to set a general multiplier for the ranking
+
+== 0.2.0 / 2012-01-14
+
+* added configure() and parameters to influence emphasizing
+
+== 0.1.0 / 2012-01-14
+
+* 1 major enhancement
+  * Birthday!

@@ -1,0 +1,13 @@
+current directory: /Users/mminckle/dev/bewd_19_copy/vendor/bundle/ruby/2.2.0/gems/json-1.8.6/ext/json
+/Users/mminckle/.rvm/rubies/ruby-2.2.0/bin/ruby -r ./siteconf20181012-96306-l6pozf.rb extconf.rb
+creating Makefile
+
+current directory: /Users/mminckle/dev/bewd_19_copy/vendor/bundle/ruby/2.2.0/gems/json-1.8.6/ext/json
+make "DESTDIR=" clean
+
+current directory: /Users/mminckle/dev/bewd_19_copy/vendor/bundle/ruby/2.2.0/gems/json-1.8.6/ext/json
+make "DESTDIR="
+make: Nothing to be done for `all'.
+
+current directory: /Users/mminckle/dev/bewd_19_copy/vendor/bundle/ruby/2.2.0/gems/json-1.8.6/ext/json
+make "DESTDIR=" install

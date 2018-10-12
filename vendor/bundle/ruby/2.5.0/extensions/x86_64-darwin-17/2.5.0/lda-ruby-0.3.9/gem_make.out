@@ -1,0 +1,38 @@
+current directory: /Users/mminckle/dev/bewd_19_copy/vendor/bundle/ruby/2.5.0/gems/lda-ruby-0.3.9/ext/lda-ruby
+/usr/local/opt/ruby/bin/ruby -r ./siteconf20181012-31902-e2o6j.rb extconf.rb
+creating Makefile
+
+current directory: /Users/mminckle/dev/bewd_19_copy/vendor/bundle/ruby/2.5.0/gems/lda-ruby-0.3.9/ext/lda-ruby
+make "DESTDIR=" clean
+
+current directory: /Users/mminckle/dev/bewd_19_copy/vendor/bundle/ruby/2.5.0/gems/lda-ruby-0.3.9/ext/lda-ruby
+make "DESTDIR="
+compiling cokus.c
+compiling lda-alpha.c
+compiling lda-data.c
+compiling lda-inference.c
+In file included from lda-inference.c:30:
+./lda-model.h:1:9: warning: 'LDA_MODEL_H' is used as a header guard here, followed by #define of a different macro [-Wheader-guard]
+#ifndef LDA_MODEL_H
+        ^~~~~~~~~~~
+./lda-model.h:2:9: note: 'LDA_MODEL' is defined here; did you mean 'LDA_MODEL_H'?
+#define LDA_MODEL
+        ^~~~~~~~~
+        LDA_MODEL_H
+1 warning generated.
+compiling lda-model.c
+In file included from lda-model.c:20:
+./lda-model.h:1:9: warning: 'LDA_MODEL_H' is used as a header guard here, followed by #define of a different macro [-Wheader-guard]
+#ifndef LDA_MODEL_H
+        ^~~~~~~~~~~
+./lda-model.h:2:9: note: 'LDA_MODEL' is defined here; did you mean 'LDA_MODEL_H'?
+#define LDA_MODEL
+        ^~~~~~~~~
+        LDA_MODEL_H
+1 warning generated.
+compiling utils.c
+linking shared-object lda-ruby/lda.bundle
+
+current directory: /Users/mminckle/dev/bewd_19_copy/vendor/bundle/ruby/2.5.0/gems/lda-ruby-0.3.9/ext/lda-ruby
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 lda.bundle ./.gem.20181012-31902-rme7wm/lda-ruby

@@ -92,7 +92,6 @@ function callBNReviews() {
     })
 }
 
-
 function clearReviews() {
     $("#clearDB").click(function(){
             $.ajax({
@@ -107,6 +106,23 @@ function clearReviews() {
             });
     })
 }
+
+
+function clearAllDBAdmin() {
+    $("#clearDBAllUsers").click(function(){
+            $.ajax({
+               type: "POST", 
+               url: '/call',
+               beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+               data: {"clearDB": 1},
+               success: function(response) {
+                console.log(response);
+                location.reload()
+               }
+            });
+    })
+}
+
 
 
 // function starPhraseButton(){
@@ -931,6 +947,7 @@ function graphMonkey(result) {
 admin();
 export2Excelbutton();
 quickDashLinks();
+clearAllDBAdmin();
 deleteCloud();
 cloud_term_search();
 // starPhraseButton();

@@ -8,6 +8,9 @@ If title count has been reached, and selected title has NOT yet been called, dea
 	<button id="getGoodreads" class="btn btn-default btn-md">Get Amazon/Goodreads Reviews</button>
 	<button id="clearDB" class="btn btn-default btn-md">Clear Reviews for This Title</button>
 	<button id="exportReviews" class="export2Excel btn btn-default btn-md">Export to Excel</button>
+	<%if current_user && current_user.email == "prhadmin@prh.com"%>
+           <button id="clearDBAllUsers" style="background-color:red !important; color:white !important" class="btn btn-default btn-md">CLEAR ENTIRE DATABASE, ALL TITLES</button>
+    <%end%>
 <% end %>
 <table id="summarytable" class="table table-bordered table-hover" data-sort-name="STAR RATING" data-sort-order="desc">
 	<thead>

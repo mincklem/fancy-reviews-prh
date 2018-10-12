@@ -115,6 +115,9 @@ def index
 			if params[:clearisbn].to_i == 1
 				puts "clearing now"
 				Review.where(:isbn=>session[:isbn]).where(:who_called=>current_user.email).delete_all
+			elsif params[:clearDB].to_i == 1
+				Review.delete_all
+				Shelf.delete_all
 			# check if book has been called recently
 			else
 				@goodreads_id = session[:isbn].to_s
